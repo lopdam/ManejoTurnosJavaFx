@@ -26,6 +26,7 @@ public class PantallaTurnos {
     private ImageButton back = new ImageButton("/images/BackButton-01.png",50,50);
     private ImageButton settings = new ImageButton("/images/SettingsButton.png",40,40);
     private PantallaAgentes PA = new PantallaAgentes();
+    private PantallaSettings PS = new PantallaSettings();
     
     
     public Scene organizar(){
@@ -51,6 +52,12 @@ public class PantallaTurnos {
     public ImageButton getPantallaTurnos() {
         return pantallaTurnos;
     }
+
+    public PantallaSettings getPS() {
+        return PS;
+    }
+    
+    
 
     public ImageButton getBack() {
         return back;
