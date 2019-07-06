@@ -1,10 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * El adminin puede crear y eliminar agentes 
  */
 package empleados;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,23 +13,39 @@ import java.util.List;
  */
 public class Admin {
 
-    public static List<Agente> agentes = new LinkedList<>();
-    
-    public static boolean agregarAgente(int puesto){
-        Agente agente=new Agente(puesto);
-        
-        
-        if(agentes.contains(agente)){
-        return false;
+    private static List<Agente> agentes = new LinkedList<>();
+
+    public static boolean agregarAgente(int puesto) {
+        Agente agente = new Agente(puesto);
+
+        Iterator<Agente> it = agentes.iterator();
+
+        while (it.hasNext()) {
+            if (it.next().getPuesto() == puesto) {
+                return false;
+            }
         }
-        
+
         agentes.add(agente);
         return true;
     }
-    
-    public static boolean removerAgente(int puesto){
-    
-        return true;
+
+    public static boolean removerAgente(int puesto) {
+
+        Iterator<Agente> it = agentes.iterator();
+        while (it.hasNext()) {
+            Agente tmp = it.next();
+            if (tmp.getPuesto() == puesto) {
+
+                return agentes.remove(it);
+            }
+        }
+
+        return false;
+    }
+
+    public List<Agente> getAgentes() {
+        return agentes;
     }
 
 }

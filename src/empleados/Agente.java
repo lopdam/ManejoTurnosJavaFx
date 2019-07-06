@@ -12,8 +12,8 @@ import turnos.Turno;
  */
 public class Agente {
 
-    public int puesto;
-    public Turno atencion;
+    private int puesto;
+    private Turno atencion;
 
     //Se crea un agente con el puesto correspiente
     public Agente(int puesto) {
@@ -31,6 +31,14 @@ public class Agente {
     @Override
     public String toString() {
         return String.valueOf(puesto);
+    }
+
+    public Turno getTurno() {
+        return atencion;
+    }
+
+    public int getPuesto() {
+        return puesto;
     }
 
 }
