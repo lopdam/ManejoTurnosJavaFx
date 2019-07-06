@@ -50,7 +50,7 @@ public class Migracion {
 
     public String toString() {
         String s = "";
-        s += tipoMov + "," + viaTransporte + "," + fechaMovilizacion.toString() + "," + fechaRegistro + "," + paisProc + "," + paisDestino+","+migrante.toString();
+        s += tipoMov + "," + viaTransporte + "," + fechaMovilizacion.toString() + "," + fechaRegistro + "," + paisProc + "," + paisDestino + "," + migrante.toString()+"\n";
         return s;
     }
     //entrada,avion,21/07/2019,07/07/2019,Ecuador,EstadosUnidos,Guayas,Guayaquil,femenino,09/08/2000,18
