@@ -31,7 +31,6 @@ public class Pantallas extends Application {
         Scene sc5 = pantallaInicio.getPT().getPA().getPGT().organizar();
         Scene sc6 = pantallaInicio.getPT().getPS().organizar();
         Scene sc7 = pantallaInicio.getPR().getPB().organizar();
-        Scene sc8 = pantallaInicio.getPT().getPA().getPR().organizar();
         
         pantallaInicio.getTurnos().setOnAction(e->primaryStage.setScene(sc2));
         pantallaInicio.getRegistros().setOnAction(e->primaryStage.setScene(sc3));

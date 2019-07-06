@@ -5,12 +5,9 @@
  */
 package pantallas;
 
+import Migracion.ReaderWriter;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -20,7 +17,6 @@ import javafx.stage.Stage;
 public class Pantallas extends Application {
 
     private static final PantallaInicio pantallaInicio = new PantallaInicio();
-    
 
     @Override
     public void start(Stage primaryStage) {
@@ -31,6 +27,7 @@ public class Pantallas extends Application {
         Scene sc5 = pantallaInicio.getPT().getPA().getPGT().organizar();
         Scene sc6 = pantallaInicio.getPT().getPS().organizar();
         Scene sc7 = pantallaInicio.getPR().getPB().organizar();
+<<<<<<< HEAD
         Scene sc8 = pantallaInicio.getPT().getPA().getPR().organizar();
         
         pantallaInicio.getTurnos().setOnAction(e->primaryStage.setScene(sc2));
@@ -46,17 +43,35 @@ public class Pantallas extends Application {
         pantallaInicio.getPR().getBuscar().setOnAction(e->primaryStage.setScene(sc7));
         pantallaInicio.getPR().getPB().getBack().setOnAction(e->primaryStage.setScene(sc3));
                 
+=======
+
+        pantallaInicio.getTurnos().setOnAction(e -> primaryStage.setScene(sc2));
+        pantallaInicio.getRegistros().setOnAction(e -> primaryStage.setScene(sc3));
+        pantallaInicio.getPT().getBack().setOnAction(e -> primaryStage.setScene(sc));
+        pantallaInicio.getPR().getBack().setOnAction(e -> primaryStage.setScene(sc));
+        pantallaInicio.getPT().getAgentes().setOnAction(e -> primaryStage.setScene(sc4));
+        pantallaInicio.getPT().getPA().getBack().setOnAction(e -> primaryStage.setScene(sc2));
+        pantallaInicio.getPT().getPA().getTurno().setOnAction(e -> primaryStage.setScene(sc5));
+        pantallaInicio.getPT().getPA().getPGT().getBack().setOnAction(e -> primaryStage.setScene(sc4));
+        pantallaInicio.getPT().getPS().getBack().setOnAction(e -> primaryStage.setScene(sc2));
+        pantallaInicio.getPT().getSettings().setOnAction(e -> primaryStage.setScene(sc6));
+        pantallaInicio.getPR().getBuscar().setOnAction(e -> primaryStage.setScene(sc7));
+        pantallaInicio.getPR().getPB().getBack().setOnAction(e -> primaryStage.setScene(sc3));
+
+>>>>>>> 6cc8b45ab87dffa62a98e0ab65cadd4c382e8556
         primaryStage.setTitle("Migration System");
         primaryStage.setScene(sc);
         primaryStage.show();
-        
+
     }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        ReaderWriter.leerRegistrosM();
         launch(args);
+
     }
 
 }
