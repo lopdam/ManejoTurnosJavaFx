@@ -24,7 +24,7 @@ public class Turno {
     
     private static final String[] letra={"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","V","W","X","Y","Z"};
     
-    
+    //Creamos un turno y sumos +1 a los turnos para conoce los turnos hasta ese momneto
     public Turno(int prioridad) {
         turnos++;
         this.prioridad = prioridad;
@@ -41,6 +41,10 @@ public class Turno {
                 break;
 
         }
+        
+        //Asignar id
+        int codigoLetra=turnos%letra.length;
+        
 
     }
 
