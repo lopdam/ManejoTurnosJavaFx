@@ -5,7 +5,6 @@
  */
 package Migracion;
 
-
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -40,14 +39,20 @@ public class Migracion {
         return registroMigratorios;
     }
 
-    public static void agregarRegistro(Migracion migra) {
+    public static void agregarLeer(Migracion migra) {
         registroMigratorios.add(migra);
+    }
+
+    public static void agregarMigracion(Migracion migra) {
+        registroMigratorios.add(migra);
+        ReaderWriter.writerRegistrosM();
     }
 
     public String toString() {
         String s = "";
-        s += tipoMov + "," + viaTransporte + "," + fechaMovilizacion + "," + fechaRegistro + "," + paisProc + "," + paisDestino;
+        s += tipoMov + "," + viaTransporte + "," + fechaMovilizacion.toString() + "," + fechaRegistro + "," + paisProc + "," + paisDestino+","+migrante.toString();
         return s;
     }
+    //entrada,avion,21/07/2019,07/07/2019,Ecuador,EstadosUnidos,Guayas,Guayaquil,femenino,09/08/2000,18
 
 }

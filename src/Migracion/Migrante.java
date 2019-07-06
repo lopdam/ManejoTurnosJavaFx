@@ -66,5 +66,10 @@ public class Migrante {
     public void setEdad(int edad) {
         this.edad = edad;
     }
+//Guayas,Guayaquil,femenino,09/08/2000,18
 
+    @Override
+    public String toString() {
+        return provOrg+","+cantonOrg+","+sexo+","+fecNac.toString()+","+edad;
+    }
 }
