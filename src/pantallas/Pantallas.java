@@ -29,6 +29,8 @@ public class Pantallas extends Application {
         Scene sc3 = pantallaInicio.getPR().organizar();
         Scene sc4 = pantallaInicio.getPT().getPA().organizar();
         Scene sc5 = pantallaInicio.getPT().getPA().getPGT().organizar();
+        Scene sc6 = pantallaInicio.getPT().getPS().organizar();
+        Scene sc7 = pantallaInicio.getPR().getPB().organizar();
         
         pantallaInicio.getTurnos().setOnAction(e->primaryStage.setScene(sc2));
         pantallaInicio.getRegistros().setOnAction(e->primaryStage.setScene(sc3));
@@ -38,6 +40,11 @@ public class Pantallas extends Application {
         pantallaInicio.getPT().getPA().getBack().setOnAction(e->primaryStage.setScene(sc2));
         pantallaInicio.getPT().getPA().getTurno().setOnAction(e->primaryStage.setScene(sc5));
         pantallaInicio.getPT().getPA().getPGT().getBack().setOnAction(e->primaryStage.setScene(sc4));
+        pantallaInicio.getPT().getPS().getBack().setOnAction(e->primaryStage.setScene(sc2));
+        pantallaInicio.getPT().getSettings().setOnAction(e->primaryStage.setScene(sc6));
+        pantallaInicio.getPR().getBuscar().setOnAction(e->primaryStage.setScene(sc7));
+        pantallaInicio.getPR().getPB().getBack().setOnAction(e->primaryStage.setScene(sc3));
+                
         primaryStage.setTitle("Migration System");
         primaryStage.setScene(sc);
         primaryStage.show();

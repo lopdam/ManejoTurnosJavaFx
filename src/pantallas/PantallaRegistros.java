@@ -23,6 +23,7 @@ public class PantallaRegistros {
     private ImageView fondo = new ImageView(new Image("/images/fondo.png"));
     private ImageView label = new ImageView(new Image("/images/LastRLabel.png",800,60,true,true));
     private ImageButton back = new ImageButton("/images/BackButton-01.png",50,50);
+    private PantallaBusqueda PB = new PantallaBusqueda();
 
     
     
@@ -45,6 +46,12 @@ public class PantallaRegistros {
     public ImageButton getBack() {
         return back;
     }
+
+    public PantallaBusqueda getPB() {
+        return PB;
+    }
+    
+    
     
     
     
