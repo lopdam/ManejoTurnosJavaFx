@@ -16,6 +16,9 @@ public class Admin {
     private static List<Agente> agentes = new LinkedList<>();
 
     public static boolean agregarAgente(int puesto) {
+        if (puesto < 1) {
+            return false;
+        }
         Agente agente = new Agente(puesto);
 
         Iterator<Agente> it = agentes.iterator();
@@ -31,6 +34,9 @@ public class Admin {
     }
 
     public static boolean removerAgente(int puesto) {
+        if (puesto < 1) {
+            return false;
+        }
 
         Iterator<Agente> it = agentes.iterator();
         while (it.hasNext()) {
@@ -44,7 +50,7 @@ public class Admin {
         return false;
     }
 
-    public List<Agente> getAgentes() {
+    public static List<Agente> getAgentes() {
         return agentes;
     }
 
