@@ -54,7 +54,7 @@ public class ReaderWriter {
                 BufferedWriter bw = new BufferedWriter(out)) {
 
             while (it.hasNext()) {
-                bw.write(it.next().toString());
+                bw.write(it.next().toString()+"\n");
 
             }
         } catch (FileNotFoundException f) {
