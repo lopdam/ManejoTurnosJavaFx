@@ -5,6 +5,7 @@
  */
 package pantallas;
 
+import Migracion.ReaderWriter;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -56,6 +57,7 @@ public class Pantallas extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+       // ReaderWriter.leerRegistrosM();
     }
 
 }
