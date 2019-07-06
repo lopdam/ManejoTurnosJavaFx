@@ -33,6 +33,7 @@ public class PantallaSettings {
     private ImageButton back = new ImageButton("/images/BackButton-01.png", 50, 50);
     private TextField txt = new TextField();
     private Label msm = new Label();
+    private int max=10;//Maximo numero de agentes
 
     public Scene organizar() {
         accept.setLayoutX(315);
@@ -66,8 +67,8 @@ public class PantallaSettings {
     }
 
     public boolean agregraAgentes(int numero) {
-        if (numero < 1 || numero > 10) {
-            msm.setText("No se acepta es numero de Puestos");
+        if (numero < 1 || numero > max) {
+            msm.setText("No se acepta es numero de Agentes");
             return false;
         }
         Admin.getAgentes().clear();
