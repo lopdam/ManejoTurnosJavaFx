@@ -1,7 +1,5 @@
 package turnos;
 
-import java.util.List;
-
 /**
  *
  * @author lopdam
@@ -21,12 +19,18 @@ public class Turno {
 
     //Combinacion de letras y numero
     private String id;
+    //numero de turno
+    private int numTurno;
     
-    private static final String[] letra={"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","V","W","X","Y","Z"};
+    private static final String[] letras={"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","V","W","X","Y","Z"};
+    
+    //numero maximo por letra
+    private static final int max=100;
+    
     
     //Creamos un turno y sumos +1 a los turnos para conoce los turnos hasta ese momneto
     public Turno(int prioridad) {
-        turnos++;
+        
         this.prioridad = prioridad;
 
         switch (prioridad) {
@@ -43,9 +47,51 @@ public class Turno {
         }
         
         //Asignar id
-        int codigoLetra=turnos%letra.length;
+        int codigoLetra=turnos/max;
         
-
+        int codigoNum=turnos%max;
+        
+        this.id=(codigoNum>=10)?letras[codigoLetra]+codigoNum:letras[codigoLetra]+"0"+codigoNum;
+        turnos++;
+        this.numTurno=turnos;
     }
+
+    public static int getTurnos() {
+        return turnos;
+    }
+    public int getnumTurno() {
+        return numTurno;
+    }
+
+
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getPrioridad() {
+        return prioridad;
+    }
+
+    public void setPrioridad(int prioridad) {
+        this.prioridad = prioridad;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
+    public String toString(){
+    return "Turno tipo: "+tipo+" de prioridad "+prioridad+" con id: "+id;
+    }
+    
 
 }
