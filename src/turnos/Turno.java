@@ -90,7 +90,7 @@ public class Turno {
     }
     
     public String toString(){
-    return "Turno tipo: "+tipo+" de prioridad "+prioridad+" con id: "+id;
+    return id;
     }
     
 
