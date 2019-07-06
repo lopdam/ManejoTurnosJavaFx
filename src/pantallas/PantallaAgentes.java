@@ -26,6 +26,7 @@ public class PantallaAgentes {
     private ComboBox cbMigrante = new ComboBox();
     private ImageButton back = new ImageButton("/images/BackButton-01.png",50,50);
     private PantallaGenerarTurno PGT = new PantallaGenerarTurno();
+    private PantallaRegistro PR = new PantallaRegistro();
     
     public Scene organizar(){
         cbAgentes.setLayoutX(100);
@@ -52,6 +53,12 @@ public class PantallaAgentes {
     public ImageButton getTurno() {
         return turno;
     }
+
+    public PantallaRegistro getPR() {
+        return PR;
+    }
+    
+    
     
     
     
