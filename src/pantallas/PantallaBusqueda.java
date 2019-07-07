@@ -46,12 +46,15 @@ public class PantallaBusqueda {
     private ArrayList<Migracion> migBusquedas = new ArrayList<>();
 
     public Scene organizar() {
-        modify.setLayoutX(65);
-        modify.setLayoutY(340);
-        modify.setDisable(true);
-        delete.setLayoutX(375);
-        delete.setLayoutY(340);
-        delete.setDisable(true);
+        modify.setLayoutX(700);
+        modify.setLayoutY(295);
+        //modify.setDisable(true);
+        delete.setLayoutX(700);
+        delete.setLayoutY(370);
+        delete.setOnAction(z -> {
+            delete();
+        });
+        //delete.setDisable(true);
         tv.setLayoutX(23);
         tv.setLayoutY(105);
         tv.prefHeight(650);
@@ -62,11 +65,12 @@ public class PantallaBusqueda {
         txt1.setLayoutY(170);
         buscar.setLayoutX(700);
         buscar.setLayoutY(235);
+        buscar.setText("Buscar");
         label.setLayoutX(0);
         label.setLayoutY(25);
         back.setLayoutX(15);
         back.setLayoutY(390);
-        root2.getChildren().addAll(label, modify, delete, back, tv, cb, txt1,buscar);
+        root2.getChildren().addAll(label, modify, delete, back, tv, cb, txt1, buscar);
         root.getChildren().addAll(fondo, root2);
 
         buscar.setOnAction(z -> {
@@ -74,7 +78,7 @@ public class PantallaBusqueda {
         });
 
         ObservableList<String> opcBusq = FXCollections.observableArrayList("fecha", "Provincia Origen",
-               "Canton Origen", "Lugar Destino");
+                "Canton Origen", "Lugar Destino");
 
         cb.setItems(opcBusq);
 
@@ -154,5 +158,14 @@ public class PantallaBusqueda {
                 }
             }
         }
+    }
+
+    public void delete() {
+        Migracion m = (Migracion) tv.getSelectionModel().getSelectedItem();
+        Migracion.getRegistroMigratorios().remove(m);
+        ObservableList<Migracion> migrations = FXCollections.observableArrayList(Migracion.getRegistroMigratorios());
+
+        tv.setItems(migrations);
+        tv.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 }
