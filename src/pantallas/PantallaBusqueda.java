@@ -127,32 +127,33 @@ public class PantallaBusqueda {
     public void buscar() {
         if (cb.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("fecha")) {
             ListIterator<Migracion> lt1 = Migracion.getRegistroMigratorios().listIterator();
-             migBusquedas.clear();
+            migBusquedas.clear();
             while (lt1.hasNext()) {
-                if (comparar(txt1.getText(), lt1.next().getFechaRegistro().toString())) {
-                    migBusquedas.add(lt1.next());
+                Migracion tmp = lt1.next();
+                if (comparar(txt1.getText(),tmp.getFechaRegistro().toString())) {
+                    migBusquedas.add(tmp);
                     ObservableList<Migracion> migrations = FXCollections.observableArrayList(migBusquedas);
                     tv.setItems(migrations);
                 }
             }
         } else if (cb.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Provincia Origen")) {
             ListIterator<Migracion> lt1 = Migracion.getRegistroMigratorios().listIterator();
-             migBusquedas.clear();
+            migBusquedas.clear();
             while (lt1.hasNext()) {
-
-                if (comparar(txt1.getText(), lt1.next().getMigrante().getProvOrg())) {
-                    migBusquedas.add(lt1.next());
+                Migracion tmp = lt1.next();
+                if (comparar(txt1.getText(),tmp.getMigrante().getProvOrg())) {
+                    migBusquedas.add(tmp);
                     ObservableList<Migracion> migrations = FXCollections.observableArrayList(migBusquedas);
                     tv.setItems(migrations);
                 }
             }
         } else if (cb.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Canton Origen")) {
             ListIterator<Migracion> lt1 = Migracion.getRegistroMigratorios().listIterator();
-             migBusquedas.clear();
+            migBusquedas.clear();
             while (lt1.hasNext()) {
-
-                if (comparar(txt1.getText(), lt1.next().getMigrante().getCantonOrg())) {
-                    migBusquedas.add(lt1.next());
+                Migracion tmp = lt1.next();
+                if (comparar(txt1.getText(), tmp.getMigrante().getCantonOrg())) {
+                    migBusquedas.add(tmp);
                     ObservableList<Migracion> migrations = FXCollections.observableArrayList(migBusquedas);
                     tv.setItems(migrations);
                 }
@@ -161,8 +162,9 @@ public class PantallaBusqueda {
             ListIterator<Migracion> lt1 = Migracion.getRegistroMigratorios().listIterator();
             migBusquedas.clear();
             while (lt1.hasNext()) {
-                if (comparar(txt1.getText(), lt1.next().getPaisDestino())) {
-                    migBusquedas.add(lt1.next());
+                Migracion tmp = lt1.next();
+                if (comparar(txt1.getText(), tmp.getPaisDestino())) {
+                    migBusquedas.add(tmp);
                     ObservableList<Migracion> migrations = FXCollections.observableArrayList(migBusquedas);
                     tv.setItems(migrations);
                 }
@@ -191,17 +193,17 @@ public class PantallaBusqueda {
     public boolean comparar(String texto, String valor) {
         int tamtxt = texto.length();
         int tamvalor = valor.length();
-        texto=texto.toLowerCase();
-        valor=valor.toLowerCase();
-        
+        texto = texto.toLowerCase();
+        valor = valor.toLowerCase();
+
         if (tamtxt > tamvalor) {
-          
+
             return false;
         } else if (texto.equals(valor.substring(0, tamtxt))) {
-            
+            System.out.println(texto + ":" + valor.substring(0, tamtxt));
             return true;
         }
-        
+
         return false;
     }
 }
