@@ -53,7 +53,7 @@ public class PantallaAgentes {
         return new Scene(root, 800, 450);
     }
 
-    public ImageButton getBack() {
+    public ImageButton getBackAgente() {
         return back;
     }
 

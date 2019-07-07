@@ -47,7 +47,7 @@ public class PantallaGenerarTurno {
         return new Scene(root, 800, 450);
     }
     
-    public ImageButton getBack() {
+    public ImageButton getBackGenTurnos() {
         return back;
     }
 

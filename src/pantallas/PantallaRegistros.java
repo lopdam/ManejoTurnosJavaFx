@@ -7,6 +7,7 @@ package pantallas;
 
 import Resources.ImageButton;
 import java.util.Iterator;
+import java.util.List;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
@@ -40,10 +41,10 @@ public class PantallaRegistros {
         list.setLayoutY(175);
         root2.getChildren().addAll(buscar, back, label, list);
         root.getChildren().addAll(fondo, root2);
-        
+
         list.setPrefWidth(700);
         list.setPrefHeight(200);
-        
+
         return new Scene(root, 800, 450);
     }
 
@@ -60,10 +61,21 @@ public class PantallaRegistros {
     }
 
     public void ultimoRegistro() {
-        Iterator<migracion.Migracion> it = migracion.Migracion.getRegistroMigratorios().iterator();
+        List<migracion.Migracion> lista = migracion.Migracion.getRegistroMigratorios();
+        lista.sort((migracion.Migracion m1, migracion.Migracion m2) -> {
+            if (m1.getFechaMovilizacion().compareTo(m2.getFechaMovilizacion()) == 0) {
+                return 0;
+            } else if (m1.getFechaMovilizacion().compareTo(m2.getFechaMovilizacion()) <1) {
+                return 1;
+            } else {
+                return -1;
+            }
+
+        });
+        Iterator<migracion.Migracion> it = lista.iterator();
         list.getItems().clear();
-        int i=1;
-        while (it.hasNext() && i<6) {
+        int i = 1;
+        while (it.hasNext() && i < 8) {
             list.getItems().add(it.next());
             i++;
 

@@ -75,7 +75,8 @@ public class Pantallas extends Application {
 
             primaryStage.setScene(sc4);
         });
-        pantallaInicio.getPT().getPA().getBack().setOnAction(e -> {
+        pantallaInicio.getPT().getPA().getBackAgente().setOnAction(e -> {
+            
             pantallaInicio.getPT().getPA().getBtnMigrante().setText("");
             primaryStage.setScene(sc2);
         });
@@ -83,10 +84,11 @@ public class Pantallas extends Application {
             pantallaInicio.getPT().getPA().getBtnMigrante().setText("");
             primaryStage.setScene(sc5);
         });
-        pantallaInicio.getPT().getPA().getPGT().getBack().setOnAction(e -> {
+        pantallaInicio.getPT().getPA().getPGT().getBackGenTurnos().setOnAction(e -> {
+            primaryStage.setScene(sc4);
             Asignar.asignarTurnos();
             pantallaInicio.getPT().getPA().llenarAgentes();
-            primaryStage.setScene(sc4);
+            
         });
         pantallaInicio.getPT().getPS().getBack().setOnAction(e -> primaryStage.setScene(sc2));
         pantallaInicio.getPT().getSettings().setOnAction(e -> primaryStage.setScene(sc6));
@@ -114,7 +116,7 @@ public class Pantallas extends Application {
             }
 
         });
-        pantallaInicio.getPT().getPA().getBack().setOnAction(value -> {
+        pantallaInicio.getPT().getPA().getPR().getBack().setOnAction(value -> {
             pantallaInicio.getPT().getPA().getBtnMigrante().setText("");
             pantallaInicio.getPT().getPA().getPR().limpiar();
             primaryStage.setScene(sc4);
