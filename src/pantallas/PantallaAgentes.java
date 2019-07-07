@@ -21,17 +21,18 @@ import javafx.scene.layout.StackPane;
  * @author MINEDUC
  */
 public class PantallaAgentes {
+
     private StackPane root = new StackPane();
     private Pane root2 = new Pane();
     private ImageView fondo = new ImageView(new Image("/images/fondo.png"));
-    private ImageButton turno = new ImageButton("/images/TurnButton.png",325,60);
+    private ImageButton turno = new ImageButton("/images/TurnButton.png", 325, 60);
     private ComboBox cbAgentes = new ComboBox();
     private ComboBox cbMigrante = new ComboBox();
-    private ImageButton back = new ImageButton("/images/BackButton-01.png",50,50);
+    private ImageButton back = new ImageButton("/images/BackButton-01.png", 50, 50);
     private PantallaGenerarTurno PGT = new PantallaGenerarTurno();
     private PantallaRegistro PR = new PantallaRegistro();
-    
-    public Scene organizar(){
+
+    public Scene organizar() {
         cbAgentes.setLayoutX(100);
         cbAgentes.setLayoutY(100);
         cbMigrante.setLayoutX(300);
@@ -40,12 +41,12 @@ public class PantallaAgentes {
         back.setLayoutY(390);
         turno.setLayoutX(250);
         turno.setLayoutY(375);
-        cbAgentes.setOnAction(e->llenarCbMigrante());
+       cbAgentes.setOnAction(e -> llenarCbMigrante());
         llenarAgentes();
-        root2.getChildren().addAll(cbAgentes,cbMigrante,turno,back);
-        root.getChildren().addAll(fondo,root2);
-        
-        return new Scene(root,800,450);
+        root2.getChildren().addAll(cbAgentes, cbMigrante, turno, back);
+        root.getChildren().addAll(fondo, root2);
+
+        return new Scene(root, 800, 450);
     }
 
     public ImageButton getBack() {
@@ -63,36 +64,26 @@ public class PantallaAgentes {
     public PantallaRegistro getPR() {
         return PR;
     }
-    
-    public void llenarAgentes(){
-        Iterator<Agente> it=Admin.getAgentes().iterator();
+
+    public void llenarAgentes() {
+        Iterator<Agente> it = Admin.getAgentes().iterator();
         cbAgentes.getItems().clear();
-        while(it.hasNext()){
-        cbAgentes.getItems().add(it.next());
-        
+        while (it.hasNext()) {
+            cbAgentes.getItems().add(it.next());
+
         }
-        
+
     }
-    
-    public void llenarCbMigrante(){
-        cbMigrante.getSelectionModel().clearSelection();
-        Agente a=(Agente) cbAgentes.getValue();
+
+    public void llenarCbMigrante() {
+        
         cbMigrante.getItems().clear();
+        Agente a = (Agente) cbAgentes.getValue();
         cbMigrante.getItems().add(a.getTurno());
     }
 
     public ComboBox getCbMigrante() {
         return cbMigrante;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
-    
 }

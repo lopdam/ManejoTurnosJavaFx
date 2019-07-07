@@ -5,6 +5,7 @@ package turnos;
 
 import empleados.Admin;
 import empleados.Agente;
+import java.util.Iterator;
 import java.util.PriorityQueue;
 
 /**
@@ -35,18 +36,20 @@ public class Asignar {
     public static PriorityQueue<Turno> getTurnos() {
         return turnos;
     }
-    
-    public static void asignarTurnos(){
-        if(!turnos.isEmpty()){
-            for(Agente a:Admin.getAgentes()){
-                System.out.println(a);
-                if(!a.isOcupado()){
-                    a.setAtencion(turnos.poll());
-                    System.out.println(a.getTurno());
-                    a.setOcupado(true);
-                }
+
+    public static void asignarTurnos() {
+        
+       Iterator<Agente> it=Admin.getAgentes().iterator();
+        while (!turnos.isEmpty() && it.hasNext()) {
+
+            Agente a = it.next();
+            if (!a.isOcupado()) {
+                a.atender();
+                a.setOcupado(true);
+
             }
-    }
+        }
 
     }
+
 }

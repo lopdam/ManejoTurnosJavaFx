@@ -5,10 +5,8 @@
  */
 package pantallas;
 
-
 import Resources.ImageButton;
 import espol.edu.ec.ListaCircularDoble.ListaCircular;
-
 
 import java.io.File;
 import java.time.LocalDateTime;
@@ -39,19 +37,18 @@ import javafx.stage.Stage;
  * @author Odalys
  */
 public class PantallaTurnosD {
-    
-   private BorderPane root = new BorderPane();
+
+    private BorderPane root = new BorderPane();
     private Label tiempo;
     static Label mensaje;
     static ListIterator<Image> it;
     static Label mostrarTurno;
     static Label mostrarPuesto;
     static ListaCircular<Image> listai;
-    static ImageView imagenn =new ImageView();
-   
+    static ImageView imagenn = new ImageView();
 
     public PantallaTurnosD() {
-        
+
         ordenarElementos();
         Thread t2 = new Thread(new Publicidad());
         t2.start();
@@ -63,25 +60,25 @@ public class PantallaTurnosD {
         t1.start();
 
     }
+
     public Pane ordenarElementos() {
-         VBox imagenes = new VBox();
+        VBox imagenes = new VBox();
         listai = new ListaCircular();
-        listai.addLast(new Image(new File("src/images/im1.jpg").toURI().toString()));   
+        listai.addLast(new Image(new File("src/images/im1.jpg").toURI().toString()));
         listai.addLast(new Image(new File("src/images/im2.jpg").toURI().toString()));
         listai.addLast(new Image(new File("src/images/im3.jpg").toURI().toString()));
         listai.addLast(new Image(new File("src/images/im4.jpg").toURI().toString()));
-        listai.addLast(new Image(new File("src/images/im5.jpg").toURI().toString()));   
-        listai.addLast(new Image(new File("src/images/im6.jpg").toURI().toString()));   
+        listai.addLast(new Image(new File("src/images/im5.jpg").toURI().toString()));
+        listai.addLast(new Image(new File("src/images/im6.jpg").toURI().toString()));
         listai.addLast(new Image(new File("src/images/im7.jpg").toURI().toString()));
         listai.addLast(new Image(new File("src/images/im8.jpg").toURI().toString()));
         imagenes.getChildren().add(imagenn);
         return imagenes;
 
     }
-    
 
-    public Pane getRoot() {
-        return root;
+    public Scene getScene() {
+        return new Scene(root, 800, 450);
     }
 
     public Pane crearBajo() {
@@ -200,7 +197,6 @@ public class PantallaTurnosD {
 
     }
 
-    
     public class Publicidad implements Runnable {
 
         @Override

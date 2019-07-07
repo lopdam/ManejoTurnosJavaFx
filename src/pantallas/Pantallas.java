@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import turnos.Asignar;
 
 /**
  *
@@ -31,6 +32,7 @@ public class Pantallas extends Application {
         Scene sc6 = pantallaInicio.getPT().getPS().organizar();
         Scene sc7 = pantallaInicio.getPR().getPB().organizar();
         Scene sc8 = pantallaInicio.getPT().getPA().getPR().organizar();
+        Scene sc9=pantallaInicio.getPT().getPTD().getScene();
 
         pantallaInicio.getTurnos().setOnAction(e -> primaryStage.setScene(sc2));
         pantallaInicio.getRegistros().setOnAction(e -> primaryStage.setScene(sc3));
@@ -38,6 +40,7 @@ public class Pantallas extends Application {
         pantallaInicio.getPR().getBack().setOnAction(e -> primaryStage.setScene(sc));
         pantallaInicio.getPT().getAgentes().setOnAction(e -> {
             pantallaInicio.getPT().getPA().llenarAgentes();
+            Asignar.asignarTurnos();
             primaryStage.setScene(sc4);
         });
         pantallaInicio.getPT().getPA().getBack().setOnAction(e -> primaryStage.setScene(sc2));
@@ -47,6 +50,7 @@ public class Pantallas extends Application {
         pantallaInicio.getPT().getSettings().setOnAction(e -> primaryStage.setScene(sc6));
         pantallaInicio.getPR().getBuscar().setOnAction(e -> primaryStage.setScene(sc7));
         pantallaInicio.getPR().getPB().getBack().setOnAction(e -> primaryStage.setScene(sc3));
+        pantallaInicio.getPT().getPantallaTurnos().setOnAction(value->primaryStage.setScene(sc9));
 
         primaryStage.setTitle("Migration System");
         primaryStage.setScene(sc);
