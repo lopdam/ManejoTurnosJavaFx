@@ -1,7 +1,7 @@
-entrada,avion,2019-07-21,2019-07-07,Ecuador,EstadosUnidos,Guayas,Guayaquil,femenino,2000-08-09,18
 entrada,avion,2019-07-13,2019-07-07,Ecuador,colombia,guayas,guayaquil,masculino,1998-07-07,21
 salida,auto,2019-07-15,2019-07-09,peru,colombia,guayas,guayaquil,masculino,1991-07-07,28
 entrada,avion,2019-07-22,2019-07-10,peru,colombia,guayas,guayaquil,masculino,2010-07-07,9
-entrada,avion,2019-07-22,2019-07-10,peru,colombia,guayas,guayaquil,masculino,2010-07-07,9
 salida,auto,2019-07-18,2019-07-08,ecuador,ecuador,guayas,guayaquil,masculino,1998-07-07,21
-salida,auto,2019-07-18,2019-07-08,ecuador,peru,guayas,guayaquil,masculino,1998-07-07,21
+entrada,avion,2019-07-22,2019-07-10,chile,colombia,guayas,guayaquil,masculino,2010-07-07,9
+salida,auto,2019-07-18,2019-07-08,ecuador,panama,guayas,guayaquil,masculino,1998-07-07,21
+entrada,caminando,2019-07-21,2019-07-07,Ecuador,EstadosUnidos,Guayas,Guayaquil,femenino,2000-08-09,18

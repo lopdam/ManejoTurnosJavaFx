@@ -184,6 +184,7 @@ public class PantallaBusqueda {
         Migracion.UpDate();
         tv.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
+    
 
     public Migracion modificar() {
         Migracion m = (Migracion) tv.getSelectionModel().getSelectedItem();
@@ -219,5 +220,11 @@ public class PantallaBusqueda {
 
     public Button getModificar() {
         return modify;
+    }
+    
+    public void llenarTabla(){
+        ObservableList<Migracion> migrations = FXCollections.observableArrayList(Migracion.getRegistroMigratorios());
+        tv.setItems(migrations);
+        tv.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 }
