@@ -43,7 +43,8 @@ public class PantallaAgentes {
         back.setLayoutY(390);
         turno.setLayoutX(250);
         turno.setLayoutY(375);
-        cbAgentes.setOnMouseClicked(e -> Asignar.asignarTurnos());
+        //cbAgentes.setOnMouseExited(e -> Asignar.asignarTurnos());
+        
         cbAgentes.setOnAction(e -> llenarCbMigrante());
         llenarAgentes();
         root2.getChildren().addAll(cbAgentes, cbMigrante, turno, back);
@@ -72,8 +73,10 @@ public class PantallaAgentes {
         Iterator<Agente> it = Admin.getAgentes().iterator();
         cbAgentes.getItems().clear();
         while (it.hasNext()) {
-            cbAgentes.getItems().add(it.next());
-
+            Agente agnt = it.next();
+            if (agnt.isOcupado()) {
+                cbAgentes.getItems().add(agnt);
+            }
         }
 
     }
