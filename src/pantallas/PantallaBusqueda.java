@@ -166,8 +166,8 @@ public class PantallaBusqueda {
         Migracion m = (Migracion) tv.getSelectionModel().getSelectedItem();
         Migracion.getRegistroMigratorios().remove(m);
         ObservableList<Migracion> migrations = FXCollections.observableArrayList(Migracion.getRegistroMigratorios());
-
         tv.setItems(migrations);
+         Migracion.UpDate();
         tv.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 }
