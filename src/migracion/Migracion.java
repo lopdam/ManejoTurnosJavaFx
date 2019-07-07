@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Migracion;
+package migracion;
 
 import java.util.Date;
 import java.util.LinkedList;
@@ -45,9 +45,13 @@ public class Migracion {
     }
 
     //Esta sirve cuando solamente se registra
-    public static void agregarMigracion(Migracion migra) {
+    public static boolean agregarMigracion(Migracion migra) {
+        if(migra==null){
+            return false;
+        }
         registroMigratorios.add(migra);
         ReaderWriter.writerRegistrosM();
+        return  true;
     }
 
     public String toString() {

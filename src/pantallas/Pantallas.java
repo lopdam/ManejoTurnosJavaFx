@@ -56,6 +56,7 @@ public class Pantallas extends Application {
         });
         pantallaInicio.getPT().getPA().getPGT().getBack().setOnAction(e -> {
             Asignar.asignarTurnos();
+            pantallaInicio.getPT().getPA().llenarAgentes();
             primaryStage.setScene(sc4);
         });
         pantallaInicio.getPT().getPS().getBack().setOnAction(e -> primaryStage.setScene(sc2));
@@ -72,12 +73,15 @@ public class Pantallas extends Application {
         pantallaInicio.getPT().getPA().getBtnMigrante().setOnAction(e -> {
             pantallaInicio.getPT().getPA().AgenteRegistrador().setOcupado(false);
             Asignar.asignarTurnos();
+            pantallaInicio.getPT().getPA().llenarAgentes();
             //pantallaInicio.getPT().getPA().AgenteRegistrador().atender();
             primaryStage.setScene(sc8);
         });
 
         pantallaInicio.getPT().getPA().getPR().getBtnRegisto().setOnAction(e -> {
+
             pantallaInicio.getPT().getPA().getBtnMigrante().setText("");
+            //migracion.Migracion.agregarMigracion(pantallaInicio.getPT().getPA().getPR().getRegistro());
             primaryStage.setScene(sc4);
         });
 
@@ -91,7 +95,7 @@ public class Pantallas extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Migracion.ReaderWriter.leerRegistrosM();
+        migracion.ReaderWriter.leerRegistrosM();
         launch(args);
     }
 

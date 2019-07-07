@@ -27,7 +27,7 @@ public class PantallaRegistros {
     private ImageView label = new ImageView(new Image("/images/LastRLabel.png", 800, 60, true, true));
     private ImageButton back = new ImageButton("/images/BackButton-01.png", 50, 50);
     private PantallaBusqueda PB = new PantallaBusqueda();
-    private ListView<Migracion.Migracion> list = new ListView<>();
+    private ListView<migracion.Migracion> list = new ListView<>();
 
     public Scene organizar() {
         buscar.setLayoutX(300);
@@ -61,7 +61,7 @@ public class PantallaRegistros {
     }
 
     public void ultimoRegistro() {
-        Iterator<Migracion.Migracion> it = Migracion.Migracion.getRegistroMigratorios().iterator();
+        Iterator<migracion.Migracion> it = migracion.Migracion.getRegistroMigratorios().iterator();
         list.getItems().clear();
         int i=1;
         while (it.hasNext() && i<6) {

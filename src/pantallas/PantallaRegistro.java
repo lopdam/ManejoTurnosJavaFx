@@ -5,6 +5,7 @@
  */
 package pantallas;
 
+import migracion.Migracion;
 import Resources.ImageButton;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,6 +17,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import migracion.Migrante;
 
 /**
  *
@@ -148,7 +150,7 @@ public class PantallaRegistro {
         tfanio.setLayoutY(337);
 
         root2.getChildren().addAll(registrar, label, po, tfpo, co, tfco, gen, tfgen, edad, tfedad, anionac, tfanionac,
-                 tipomov, tftipomov, viatrans, tfviatrans, paisproc, tfpaisproc, paisdest, tfpaisdest, dia, tfdia, mes, tfmes, anio, tfanio, agent);
+                tipomov, tftipomov, viatrans, tfviatrans, paisproc, tfpaisproc, paisdest, tfpaisdest, dia, tfdia, mes, tfmes, anio, tfanio, agent);
         root.getChildren().addAll(fondo, root2);
         return new Scene(root, 800, 450);
     }
@@ -156,4 +158,12 @@ public class PantallaRegistro {
     public Button getBtnRegisto() {
         return registrar;
     }
+
+    //public Migracion getRegistro() {
+        //Guayas,Guayaquil,femenino,09/08/2000,18
+        //Migrante migrante = new Migrante(tfpo.getText(),tf, font, fecNac, Integer.parseInt(tfedad.getText()));
+        
+        //Migracion migra = new Migracion(tf, tfviatrans.getText(), fechaMovilizacion, fechaRegistro, font, font, migrante);
+        //return migra;
+    //}// //entrada,avion,21/07/2019,07/07/2019,Ecuador,EstadosUnidos
 }

@@ -19,7 +19,7 @@ import turnos.Asignar;
  * @author MINEDUC
  */
 public class PantallaGenerarTurno {
-
+    
     private StackPane root = new StackPane();
     private Pane root2 = new Pane();
     private ImageView fondo = new ImageView(new Image("/images/fondo.png"));
@@ -28,7 +28,7 @@ public class PantallaGenerarTurno {
     private ImageButton turno3 = new ImageButton("/images/ThirdButton.png", 200, 200);
     private ImageButton back = new ImageButton("/images/BackButton-01.png", 50, 50);
     private ImageView label = new ImageView(new Image("/images/LabelGenTurn.png", 800, 60, true, true));
-
+    
     public Scene organizar() {
         turno1.setLayoutX(40);
         turno1.setLayoutY(150);
@@ -42,11 +42,11 @@ public class PantallaGenerarTurno {
         back.setLayoutY(390);
         root2.getChildren().addAll(turno1, turno2, turno3, back, label);
         root.getChildren().addAll(fondo, root2);
-
+        
         funicones();
         return new Scene(root, 800, 450);
     }
-
+    
     public ImageButton getBack() {
         return back;
     }
@@ -54,6 +54,7 @@ public class PantallaGenerarTurno {
     //Carga la funcione agregar
     //Discapacitad=1, terceraEdad=2,Normal=3
     public void funicones() {
+     
         turno1.setOnAction(value
                 -> {
             Asignar.agregraTurno(3);
@@ -70,8 +71,8 @@ public class PantallaGenerarTurno {
                 -> {
             Asignar.agregraTurno(2);
             System.out.println(Asignar.getTurnos().toString());
-             
+            
         });
     }
-
+    
 }
