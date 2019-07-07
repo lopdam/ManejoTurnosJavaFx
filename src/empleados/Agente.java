@@ -14,6 +14,7 @@ public class Agente {
 
     private int puesto;
     private Turno atencion;
+    private boolean ocupado = false;
 
     //Se crea un agente con el puesto correspiente
     public Agente(int puesto) {
@@ -40,5 +41,21 @@ public class Agente {
     public int getPuesto() {
         return puesto;
     }
+
+    public boolean isOcupado() {
+        return ocupado;
+    }
+
+    public void setAtencion(Turno atencion) {
+        this.atencion = atencion;
+    }
+
+    public void setOcupado(boolean ocupado) {
+        this.ocupado = ocupado;
+    }
+    
+    
+    
+    
 
 }

@@ -40,6 +40,7 @@ public class PantallaAgentes {
         back.setLayoutY(390);
         turno.setLayoutX(250);
         turno.setLayoutY(375);
+        cbAgentes.setOnAction(e->llenarCbMigrante());
         llenarAgentes();
         root2.getChildren().addAll(cbAgentes,cbMigrante,turno,back);
         root.getChildren().addAll(fondo,root2);
@@ -72,6 +73,19 @@ public class PantallaAgentes {
         }
         
     }
+    
+    public void llenarCbMigrante(){
+        cbMigrante.getSelectionModel().clearSelection();
+        Agente a=(Agente) cbAgentes.getValue();
+        cbMigrante.getItems().clear();
+        cbMigrante.getItems().add(a.getTurno());
+    }
+
+    public ComboBox getCbMigrante() {
+        return cbMigrante;
+    }
+    
+    
     
     
     
