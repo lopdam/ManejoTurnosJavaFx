@@ -125,47 +125,51 @@ public class PantallaBusqueda {
     }
 
     public void buscar() {
+        String textoBuscar = txt1.getText();
+        migBusquedas.clear();
+        ObservableList<Migracion> migrations = FXCollections.observableArrayList(migBusquedas);
+        tv.setItems(migrations);
+
         if (cb.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("fecha")) {
             ListIterator<Migracion> lt1 = Migracion.getRegistroMigratorios().listIterator();
-            migBusquedas.clear();
             while (lt1.hasNext()) {
                 Migracion tmp = lt1.next();
-                if (comparar(txt1.getText(),tmp.getFechaRegistro().toString())) {
+                if (comparar(textoBuscar, tmp.getFechaRegistro().toString())) {
                     migBusquedas.add(tmp);
-                    ObservableList<Migracion> migrations = FXCollections.observableArrayList(migBusquedas);
+                    migrations = FXCollections.observableArrayList(migBusquedas);
                     tv.setItems(migrations);
                 }
             }
         } else if (cb.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Provincia Origen")) {
             ListIterator<Migracion> lt1 = Migracion.getRegistroMigratorios().listIterator();
-            migBusquedas.clear();
+
             while (lt1.hasNext()) {
                 Migracion tmp = lt1.next();
-                if (comparar(txt1.getText(),tmp.getMigrante().getProvOrg())) {
+                if (comparar(textoBuscar, tmp.getMigrante().getProvOrg())) {
                     migBusquedas.add(tmp);
-                    ObservableList<Migracion> migrations = FXCollections.observableArrayList(migBusquedas);
+                    migrations = FXCollections.observableArrayList(migBusquedas);
                     tv.setItems(migrations);
                 }
             }
         } else if (cb.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Canton Origen")) {
             ListIterator<Migracion> lt1 = Migracion.getRegistroMigratorios().listIterator();
-            migBusquedas.clear();
+
             while (lt1.hasNext()) {
                 Migracion tmp = lt1.next();
-                if (comparar(txt1.getText(), tmp.getMigrante().getCantonOrg())) {
+                if (comparar(textoBuscar, tmp.getMigrante().getCantonOrg())) {
                     migBusquedas.add(tmp);
-                    ObservableList<Migracion> migrations = FXCollections.observableArrayList(migBusquedas);
+                    migrations = FXCollections.observableArrayList(migBusquedas);
                     tv.setItems(migrations);
                 }
             }
         } else if (cb.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Lugar Destino")) {
             ListIterator<Migracion> lt1 = Migracion.getRegistroMigratorios().listIterator();
-            migBusquedas.clear();
+
             while (lt1.hasNext()) {
                 Migracion tmp = lt1.next();
-                if (comparar(txt1.getText(), tmp.getPaisDestino())) {
+                if (comparar(textoBuscar, tmp.getPaisDestino())) {
                     migBusquedas.add(tmp);
-                    ObservableList<Migracion> migrations = FXCollections.observableArrayList(migBusquedas);
+                    migrations = FXCollections.observableArrayList(migBusquedas);
                     tv.setItems(migrations);
                 }
             }
