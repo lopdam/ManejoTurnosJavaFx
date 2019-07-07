@@ -26,6 +26,7 @@ public class PantallaTurnos {
     private ImageButton back = new ImageButton("/images/BackButton-01.png",50,50);
     private ImageButton settings = new ImageButton("/images/SettingsButton.png",40,40);
     private PantallaAgentes PA = new PantallaAgentes();
+    private PantallaTurnosD PTD = new PantallaTurnosD();
     private PantallaSettings PS = new PantallaSettings();
     
     
@@ -56,9 +57,16 @@ public class PantallaTurnos {
     public PantallaSettings getPS() {
         return PS;
     }
-    
-    
 
+    public PantallaTurnosD getPTD() {
+        return PTD;
+    }
+
+    public void setPTD(PantallaTurnosD PTD) {
+        this.PTD = PTD;
+    }
+    
+    
     public ImageButton getBack() {
         return back;
     }
