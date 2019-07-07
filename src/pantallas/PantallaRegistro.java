@@ -163,7 +163,7 @@ public class PantallaRegistro {
         msm.setLayoutY(365);
 
         root2.getChildren().addAll(registrar, label, po, tfpo, co, tfco, gen, tfgen, edad, tfedad, anionac, tfanionac,
-                tipomov, tftipomov, viatrans, tfviatrans, paisproc, tfpaisproc, paisdest, tfpaisdest, fechaMovil, tffechaMovil, fechaReg, tffechaReg, limpiar, agent, back,msm);
+                tipomov, tftipomov, viatrans, tfviatrans, paisproc, tfpaisproc, paisdest, tfpaisdest, fechaMovil, tffechaMovil, fechaReg, tffechaReg, limpiar, agent, back, msm);
         root.getChildren().addAll(fondo, root2);
         limpiar.setOnAction(value -> limpiar());
         return new Scene(root, 800, 450);
@@ -180,6 +180,10 @@ public class PantallaRegistro {
     public boolean RegistrarDatos() {
         //Guayas,Guayaquil,femenino,09/08/2000,18
         try {
+            if (!verificar()) {
+                msm.setText("Datos Incorrectos o Faltantes");
+                return false;
+            }
             Migrante migrante = new Migrante(tfpo.getText(), tfco.getText(), tfgen.getText(), tfanionac.getValue(), Integer.parseInt(tfedad.getText()));
             Migracion migra = new Migracion(tftipomov.getText(), tfviatrans.getText(), tffechaMovil.getValue(), tffechaReg.getValue(), tfpaisproc.getText(), tfpaisdest.getText(), migrante);
             migracion.Migracion.agregarMigracion(migra);
@@ -199,6 +203,14 @@ public class PantallaRegistro {
     }// //entrada,avion,21/07/2019,07/07/2019,Ecuador,EstadosUnidos
 
     public boolean verificar() {
+        if (tfpo.getText().equals("") || tfco.getText().equals("") || tfgen.getText().equals("")
+                || tfedad.getText().equals("")
+                || tftipomov.getText().equals("")
+                || tfviatrans.getText().equals("")
+                || tfpaisproc.getText().equals("")
+                || tfpaisdest.getText().equals("")) {
+            return false;
+        }
         return true;
     }
 
