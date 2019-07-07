@@ -26,6 +26,9 @@ public class Migracion {
 
     private static List<Migracion> registroMigratorios = new LinkedList<Migracion>();
 
+    public Migracion() {
+    }
+
     public Migracion(String tipoMov, String viaTransporte, LocalDate fechaMovilizacion, LocalDate fechaRegistro, String paisProc, String paisDestino, Migrante migrante) {
         this.tipoMov = tipoMov;
         this.viaTransporte = viaTransporte;

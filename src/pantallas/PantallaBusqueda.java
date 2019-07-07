@@ -44,6 +44,7 @@ public class PantallaBusqueda {
     private TextField txt1 = new TextField();
     private Button buscar = new Button();
     private PantallaRegistro PM = new PantallaRegistro();
+    private Migracion actual=new Migracion();
 
     private ArrayList<Migracion> migBusquedas = new ArrayList<>();
 
@@ -187,8 +188,12 @@ public class PantallaBusqueda {
     public Migracion modificar() {
         Migracion m = (Migracion) tv.getSelectionModel().getSelectedItem();
         Migracion.getRegistroMigratorios().remove(m);
+        actual=m;
 
         return m;
+    }
+    public Migracion actualModify(){
+    return actual;
     }
 
     public boolean comparar(String texto, String valor) {

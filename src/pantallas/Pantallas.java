@@ -52,8 +52,7 @@ public class Pantallas extends Application {
         });
 
         pantallaInicio.getPR().getPB().getPM().getBack().setOnAction(value -> {
-            if (pantallaInicio.getPR().getPB().getPM().RegistrarDatos()) {
-                pantallaInicio.getPR().getPB().getPM().limpiar();
+            if (migracion.Migracion.agregarMigracion(pantallaInicio.getPR().getPB().actualModify())) {
                 primaryStage.setScene(sc7);
             }
 
