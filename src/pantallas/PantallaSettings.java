@@ -7,6 +7,7 @@ package pantallas;
 
 import Resources.ImageButton;
 import empleados.Admin;
+import pantallas.PantallaAgentes;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -78,6 +79,8 @@ public class PantallaSettings {
         }
         msm.setText("Asignacion Correcta");
         System.out.println(Admin.getAgentes().toString());
+        PantallaAgentes ag=new PantallaAgentes();
+        ag.llenarAgentes();
         return true;
 
     }

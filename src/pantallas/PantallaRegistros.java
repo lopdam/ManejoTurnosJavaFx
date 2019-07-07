@@ -63,9 +63,10 @@ public class PantallaRegistros {
     public void ultimoRegistro() {
         Iterator<Migracion.Migracion> it = Migracion.Migracion.getRegistroMigratorios().iterator();
         list.getItems().clear();
-        
-        while (it.hasNext()) {
+        int i=1;
+        while (it.hasNext() && i<6) {
             list.getItems().add(it.next());
+            i++;
 
         }
     }

@@ -6,6 +6,9 @@
 package pantallas;
 
 import Resources.ImageButton;
+import empleados.Admin;
+import empleados.Agente;
+import java.util.Iterator;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
@@ -22,7 +25,7 @@ public class PantallaAgentes {
     private Pane root2 = new Pane();
     private ImageView fondo = new ImageView(new Image("/images/fondo.png"));
     private ImageButton turno = new ImageButton("/images/TurnButton.png",325,60);
-    private ComboBox cbAgentes = new ComboBox();
+    private static ComboBox cbAgentes = new ComboBox();
     private ComboBox cbMigrante = new ComboBox();
     private ImageButton back = new ImageButton("/images/BackButton-01.png",50,50);
     private PantallaGenerarTurno PGT = new PantallaGenerarTurno();
@@ -37,8 +40,10 @@ public class PantallaAgentes {
         back.setLayoutY(390);
         turno.setLayoutX(250);
         turno.setLayoutY(375);
+        llenarAgentes();
         root2.getChildren().addAll(cbAgentes,cbMigrante,turno,back);
         root.getChildren().addAll(fondo,root2);
+        
         return new Scene(root,800,450);
     }
 
@@ -58,6 +63,15 @@ public class PantallaAgentes {
         return PR;
     }
     
+    public static void llenarAgentes(){
+        Iterator<Agente> it=Admin.getAgentes().iterator();
+        cbAgentes.getItems().clear();
+        while(it.hasNext()){
+        cbAgentes.getItems().add(it.next());
+        
+        }
+        
+    }
     
     
     
