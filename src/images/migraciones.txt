@@ -4,3 +4,4 @@ ingreso,avion,2019-07-07,2019-07-07,peru,colombia,guayas,guayaquil,masculino,201
 ingreso,avion,2019-07-07,2019-07-07,peru,colombia,guayas,guayaquil,masculino,2019-07-07,18
 ingreso,avion,2019-07-07,2019-07-07,peru,colombia,guayas,guayaquil,masculino,2019-07-07,18
 ingreso,avion,2019-07-07,2019-07-07,peru,colombia,guayas,guayaquil,masculino,2019-07-07,18
+ingreso,avion,2019-07-07,2019-07-07,peru,colombia,guayas,guayaquil,masculino,2019-07-07,18

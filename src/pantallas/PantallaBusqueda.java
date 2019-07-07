@@ -6,34 +6,44 @@
 package pantallas;
 
 import Resources.ImageButton;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.ListIterator;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import migracion.Migracion;
+import migracion.Migrante;
 
 /**
  *
  * @author MINEDUC
  */
 public class PantallaBusqueda {
+
     private StackPane root = new StackPane();
     private Pane root2 = new Pane();
-    private ImageButton modify = new ImageButton("/images/ModifyButton.png",275,100);
-    private ImageButton delete = new ImageButton("/images/DeleteButton.png",275,100);
+    private ImageButton modify = new ImageButton("/images/ModifyButton.png", 275, 100);
+    private ImageButton delete = new ImageButton("/images/DeleteButton.png", 275, 100);
     private ImageView fondo = new ImageView(new Image("/images/fondo.png"));
-    private ImageView label = new ImageView(new Image("/images/LabelSearch.png",800,60,true,true));
-    private ImageButton back = new ImageButton("/images/BackButton-01.png",50,50);
+    private ImageView label = new ImageView(new Image("/images/LabelSearch.png", 800, 60, true, true));
+    private ImageButton back = new ImageButton("/images/BackButton-01.png", 50, 50);
     private TableView tv = new TableView();
     private ComboBox cb = new ComboBox();
-    private ComboBox cb1 = new ComboBox();
+    //private ComboBox cb1 = new ComboBox();
+    private TextField txt1 = new TextField();
+    private ArrayList<Migracion> migBusquedas = new ArrayList<>();
 
-
-    
-    
-    public Scene organizar(){
+    public Scene organizar() {
         modify.setLayoutX(65);
         modify.setLayoutY(340);
         modify.setDisable(true);
@@ -46,21 +56,64 @@ public class PantallaBusqueda {
         tv.prefWidth(225);
         cb.setLayoutX(700);
         cb.setLayoutY(105);
-        cb1.setLayoutX(700);
-        cb1.setLayoutY(170);
+        txt1.setLayoutX(700);
+        txt1.setLayoutY(170);
         label.setLayoutX(0);
         label.setLayoutY(25);
         back.setLayoutX(15);
         back.setLayoutY(390);
-        root2.getChildren().addAll(label,modify,delete,back,tv,cb,cb1);
-        root.getChildren().addAll(fondo,root2);
-        return new Scene(root,800,450);
-    }
+        root2.getChildren().addAll(label, modify, delete, back, tv, cb, txt1);
+        root.getChildren().addAll(fondo, root2);
 
+        TableColumn<Migracion, String> tipoMov = new TableColumn<>("tipo");
+        tipoMov.setCellValueFactory(new PropertyValueFactory<Migracion, String>("tipoMov"));
+        TableColumn<Migracion, String> viaTransporte = new TableColumn<>("viaTransporte");
+        viaTransporte.setCellValueFactory(new PropertyValueFactory<Migracion, String>("viaTransporte"));
+        TableColumn<Migracion, Date> fechaMovilizacion = new TableColumn<>("Fecha Movilizacion");
+        fechaMovilizacion.setCellValueFactory(new PropertyValueFactory<Migracion, Date>("fechaMovilizacion"));
+        TableColumn<Migracion, Date> fechaRegistro = new TableColumn<>("Fecha Registro");
+        fechaRegistro.setCellValueFactory(new PropertyValueFactory<Migracion, Date>("fechaRegistro"));
+        TableColumn<Migracion, String> paisProc = new TableColumn<>("Procedencia");
+        paisProc.setCellValueFactory(new PropertyValueFactory<Migracion, String>("paisProc"));
+        TableColumn<Migracion, String> paisDestino = new TableColumn<>("Destino");
+        paisDestino.setCellValueFactory(new PropertyValueFactory<Migracion, String>("paisDestino"));
+
+        //Las columnas de migrante que no se como acomodar xd
+        TableColumn<Migrante, String> provOrg = new TableColumn<>("Provincia Org");
+        provOrg.setCellValueFactory(new PropertyValueFactory<Migrante, String>("provOrg"));
+        TableColumn<Migrante, String> cantonOrg = new TableColumn<>("Canton org");
+        cantonOrg.setCellValueFactory(new PropertyValueFactory<Migrante, String>("cantonOrg"));
+        TableColumn<Migrante, String> sexo = new TableColumn<>("Sexo");
+        sexo.setCellValueFactory(new PropertyValueFactory<Migrante, String>("sexo"));
+        TableColumn<Migrante, Date> fecNac = new TableColumn<>("fecha nac");
+        fecNac.setCellValueFactory(new PropertyValueFactory<Migrante, Date>("fecNac"));
+        TableColumn<Migrante, Integer> edad = new TableColumn<>("edad");
+        edad.setCellValueFactory(new PropertyValueFactory<Migrante, Integer>("edad"));
+
+        tv.getColumns().addAll(tipoMov, viaTransporte, fechaMovilizacion, fechaRegistro, paisProc,
+                paisDestino/*, provOrg, cantonOrg, sexo, fecNac, edad*/);
+       ObservableList<Migracion> migrations = FXCollections.observableArrayList(Migracion.getRegistroMigratorios());
+        //ObservableList<Entregas> entregar = FXCollections.observableArrayList(Entregas.getEntregas());
+        tv.setItems(migrations);
+        tv.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        return new Scene(root, 800, 450);
+    }
 
     public ImageButton getBack() {
         return back;
     }
-    
-    
+
+    public void buscar() {
+        if (cb.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("fecha")) {
+            ListIterator<Migracion> lt1 = Migracion.getRegistroMigratorios().listIterator();
+            while (lt1.hasNext()) {
+                if (txt1.getText().equals(txt1.getText())) {
+                    migBusquedas.add(lt1.next());
+
+                }
+            }
+
+        }
+
+    }
 }
