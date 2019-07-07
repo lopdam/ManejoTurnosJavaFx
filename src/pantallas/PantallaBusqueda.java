@@ -43,6 +43,7 @@ public class PantallaBusqueda {
     //private ComboBox cb1 = new ComboBox();
     private TextField txt1 = new TextField();
     private Button buscar = new Button();
+    private PantallaRegistro PM = new PantallaRegistro();
 
     private ArrayList<Migracion> migBusquedas = new ArrayList<>();
 
@@ -75,11 +76,8 @@ public class PantallaBusqueda {
         root2.getChildren().addAll(label, modify, delete, back, tv, cb, txt1, buscar);
         root.getChildren().addAll(fondo, root2);
 
-        buscar.setOnAction(z -> {
+       buscar.setOnAction(z -> {
             buscar();
-        });
-        modify.setOnAction(value -> {
-            modificar();
         });
 
         ObservableList<String> opcBusq = FXCollections.observableArrayList("fecha", "Provincia Origen",
@@ -210,5 +208,13 @@ public class PantallaBusqueda {
         }
 
         return false;
+    }
+    
+    public PantallaRegistro getPM(){
+    return  PM;
+    }
+    
+    public Button getModificar(){
+    return modify;
     }
 }
