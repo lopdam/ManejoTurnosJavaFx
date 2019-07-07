@@ -10,28 +10,30 @@ import empleados.Admin;
 import empleados.Agente;
 import java.util.Iterator;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import turnos.Asignar;
 
 /**
  *
  * @author MINEDUC
  */
 public class PantallaAgentes {
-
+    
     private StackPane root = new StackPane();
     private Pane root2 = new Pane();
     private ImageView fondo = new ImageView(new Image("/images/fondo.png"));
     private ImageButton turno = new ImageButton("/images/TurnButton.png", 325, 60);
     private ComboBox cbAgentes = new ComboBox();
-    private ComboBox cbMigrante = new ComboBox();
+    private Button cbMigrante = new Button();
     private ImageButton back = new ImageButton("/images/BackButton-01.png", 50, 50);
     private PantallaGenerarTurno PGT = new PantallaGenerarTurno();
     private PantallaRegistro PR = new PantallaRegistro();
-
+    
     public Scene organizar() {
         cbAgentes.setLayoutX(100);
         cbAgentes.setLayoutY(100);
@@ -41,49 +43,53 @@ public class PantallaAgentes {
         back.setLayoutY(390);
         turno.setLayoutX(250);
         turno.setLayoutY(375);
-       cbAgentes.setOnAction(e -> llenarCbMigrante());
+        cbAgentes.setOnMouseClicked(e -> Asignar.asignarTurnos());
+        cbAgentes.setOnAction(e -> llenarCbMigrante());
         llenarAgentes();
         root2.getChildren().addAll(cbAgentes, cbMigrante, turno, back);
         root.getChildren().addAll(fondo, root2);
-
+        
         return new Scene(root, 800, 450);
     }
-
+    
     public ImageButton getBack() {
         return back;
     }
-
+    
     public PantallaGenerarTurno getPGT() {
         return PGT;
     }
-
+    
     public ImageButton getTurno() {
         return turno;
     }
-
+    
     public PantallaRegistro getPR() {
         return PR;
     }
-
+    
     public void llenarAgentes() {
         Iterator<Agente> it = Admin.getAgentes().iterator();
         cbAgentes.getItems().clear();
         while (it.hasNext()) {
             cbAgentes.getItems().add(it.next());
-
+            
         }
-
+        
     }
-
+    
     public void llenarCbMigrante() {
         
-        cbMigrante.getItems().clear();
         Agente a = (Agente) cbAgentes.getValue();
-        cbMigrante.getItems().add(a.getTurno());
+        try {
+            cbMigrante.setText(a.getTurno().toString());
+        } catch (NullPointerException e) {
+            System.out.println("No existen turnos suficentes");
+        }
     }
-
-    public ComboBox getCbMigrante() {
+    
+    public Button getBtnMigrante() {
         return cbMigrante;
     }
-
+    
 }

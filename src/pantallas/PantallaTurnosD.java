@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,10 +7,13 @@
 package pantallas;
 
 import Resources.ImageButton;
+import empleados.Admin;
+import empleados.Agente;
 import espol.edu.ec.ListaCircularDoble.ListaCircular;
 
 import java.io.File;
 import java.time.LocalDateTime;
+import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +23,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -30,7 +36,10 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import turnos.Asignar;
+import turnos.Turno;
 
 /**
  *
@@ -46,6 +55,8 @@ public class PantallaTurnosD {
     static Label mostrarPuesto;
     static ListaCircular<Image> listai;
     static ImageView imagenn = new ImageView();
+    private Button sgtPagina;
+    private static VBox vbox = new VBox(10);
 
     public PantallaTurnosD() {
 
@@ -56,7 +67,11 @@ public class PantallaTurnosD {
         root.setBottom(crearBajo());
         root.setTop(crearArriba());
         root.setCenter(ordenarElementos());
+
+        root.setRight(vbox);
+        
         Thread t1 = new Thread(new tiempo());
+
         t1.start();
 
     }
@@ -81,13 +96,17 @@ public class PantallaTurnosD {
         return new Scene(root, 800, 450);
     }
 
+    public Button saliPublicidad() {
+        return sgtPagina;
+    }
+
     public Pane crearBajo() {
         VBox abajo = new VBox();
         abajo.setAlignment(Pos.CENTER);
         abajo.setPadding(new Insets(5, 5, 5, 5));
         HBox botones = new HBox();
         botones.setAlignment(Pos.CENTER);
-        Button sgtPagina = new Button("Siguiente Pagina");
+        sgtPagina = new Button("Salir");
         botones.setPadding(new Insets(5, 5, 5, 5));
         mensaje = new Label("");
         botones.getChildren().addAll(sgtPagina, mensaje);
@@ -168,7 +187,7 @@ public class PantallaTurnosD {
         puesto2.getChildren().add(mostrarPuesto);
 
         puesto1.getChildren().add(nombrepuesto);
-        puesto.getChildren().addAll(puesto1, puesto2);
+        // puesto.getChildren().addAll(tablaTurnos);
 
         panel.getChildren().addAll(turno, puesto);
         return panel;
@@ -217,6 +236,46 @@ public class PantallaTurnosD {
                 }
             }
 
+        }
+
+    }
+
+    public static void Derecha() {
+        vbox.getChildren().clear();
+        
+        HBox hbox1 = new HBox(10);
+        vbox.getChildren().add(hbox1);
+
+        Button btn1 = new Button("Turno");
+        Button btn2 = new Button("Puesto");
+
+        btn1.setTextAlignment(TextAlignment.CENTER);
+        btn2.setTextAlignment(TextAlignment.CENTER);
+        btn1.setMinSize(100, 75);
+        btn2.setMinSize(100, 75);
+
+        hbox1.getChildren().addAll(btn1, btn2);
+
+        Iterator<Agente> it = Admin.getAgentes().iterator();
+        for (int i = 0; i < 3; i++) {
+            if (it.hasNext()) {
+                Agente a = it.next();
+                if (a.isOcupado()) {
+                    HBox tmp1 = new HBox(10);
+
+                    Button tmpB1 = new Button(a.getTurno().toString());
+                    Button tmpB2 = new Button(a.toString());
+
+                    tmpB1.setTextAlignment(TextAlignment.CENTER);
+                    tmpB2.setTextAlignment(TextAlignment.CENTER);
+                    tmpB1.setMinSize(100, 75);
+                    tmpB2.setMinSize(50, 75);
+
+                    tmp1.getChildren().addAll(tmpB1, tmpB2);
+                    vbox.getChildren().add(tmp1);
+
+                }
+            }
         }
 
     }

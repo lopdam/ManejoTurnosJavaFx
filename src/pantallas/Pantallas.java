@@ -32,25 +32,36 @@ public class Pantallas extends Application {
         Scene sc6 = pantallaInicio.getPT().getPS().organizar();
         Scene sc7 = pantallaInicio.getPR().getPB().organizar();
         Scene sc8 = pantallaInicio.getPT().getPA().getPR().organizar();
-        Scene sc9=pantallaInicio.getPT().getPTD().getScene();
+        Scene sc9 = pantallaInicio.getPT().getPTD().getScene();
 
         pantallaInicio.getTurnos().setOnAction(e -> primaryStage.setScene(sc2));
         pantallaInicio.getRegistros().setOnAction(e -> primaryStage.setScene(sc3));
-        pantallaInicio.getPT().getBack().setOnAction(e -> primaryStage.setScene(sc));
+        pantallaInicio.getPT().getBack().setOnAction(e -> {
+            pantallaInicio.getPT().getPA().getBtnMigrante().setText("");
+            primaryStage.setScene(sc);
+        });
         pantallaInicio.getPR().getBack().setOnAction(e -> primaryStage.setScene(sc));
         pantallaInicio.getPT().getAgentes().setOnAction(e -> {
             pantallaInicio.getPT().getPA().llenarAgentes();
-            Asignar.asignarTurnos();
+
             primaryStage.setScene(sc4);
         });
         pantallaInicio.getPT().getPA().getBack().setOnAction(e -> primaryStage.setScene(sc2));
-        pantallaInicio.getPT().getPA().getTurno().setOnAction(e -> primaryStage.setScene(sc5));
+        pantallaInicio.getPT().getPA().getTurno().setOnAction(e -> {
+            pantallaInicio.getPT().getPA().getBtnMigrante().setText("");
+            primaryStage.setScene(sc5);
+        });
         pantallaInicio.getPT().getPA().getPGT().getBack().setOnAction(e -> primaryStage.setScene(sc4));
         pantallaInicio.getPT().getPS().getBack().setOnAction(e -> primaryStage.setScene(sc2));
         pantallaInicio.getPT().getSettings().setOnAction(e -> primaryStage.setScene(sc6));
         pantallaInicio.getPR().getBuscar().setOnAction(e -> primaryStage.setScene(sc7));
         pantallaInicio.getPR().getPB().getBack().setOnAction(e -> primaryStage.setScene(sc3));
-        pantallaInicio.getPT().getPantallaTurnos().setOnAction(value->primaryStage.setScene(sc9));
+        pantallaInicio.getPT().getPantallaTurnos().setOnAction(value -> {
+            pantallaInicio.getPT().getPTD().Derecha();
+            primaryStage.setScene(sc9);
+        });
+
+        pantallaInicio.getPT().getPTD().saliPublicidad().setOnAction(e -> primaryStage.setScene(sc2));
 
         primaryStage.setTitle("Migration System");
         primaryStage.setScene(sc);

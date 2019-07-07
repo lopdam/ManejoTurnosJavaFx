@@ -58,19 +58,19 @@ public class PantallaGenerarTurno {
                 -> {
             Asignar.agregraTurno(3);
             System.out.println(Asignar.getTurnos().toString());
-            Asignar.asignarTurnos();
+            
         });
         turno2.setOnAction(value
                 -> {
             Asignar.agregraTurno(1);
             System.out.println(Asignar.getTurnos().toString());
-             Asignar.asignarTurnos();
+            
         });
         turno3.setOnAction(value
                 -> {
             Asignar.agregraTurno(2);
             System.out.println(Asignar.getTurnos().toString());
-             Asignar.asignarTurnos();
+             
         });
     }
 
