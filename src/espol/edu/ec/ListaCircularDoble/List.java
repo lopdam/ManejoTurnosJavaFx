@@ -3,12 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pantallas;
+package espol.edu.ec.ListaCircularDoble;
 
 /**
  *
- * @author MINEDUC
+ * @author User-pc
  */
-public class PantallaEliminar {
+public interface List<E>{
+    boolean addFirst(E element);
+    boolean addLast(E element);
+    boolean isEmpty();
+    int size();
     
 }
+
+
