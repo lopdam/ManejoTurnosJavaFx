@@ -8,7 +8,6 @@ package pantallas;
 import Resources.ImageButton;
 import java.util.Iterator;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
