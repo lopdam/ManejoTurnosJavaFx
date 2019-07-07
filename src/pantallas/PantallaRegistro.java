@@ -21,6 +21,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import migracion.Migrante;
 
 /**
@@ -47,7 +48,7 @@ public class PantallaRegistro {
     private Text paisdest = new Text("PaisDestino");
     private Text fechaMovil = new Text("FechMovil");
     private Text fechaReg = new Text("FechReg");
-    private Text tipoMov = new Text("TipoMov");
+
     private TextField tfpo = new TextField();
     private TextField tfco = new TextField();
     private TextField tfgen = new TextField();
@@ -59,10 +60,13 @@ public class PantallaRegistro {
     private TextField tfpaisdest = new TextField();
     private DatePicker tffechaMovil = new DatePicker(LocalDate.now());
     private DatePicker tffechaReg = new DatePicker(LocalDate.now());
-    private TextField tftipoMov = new TextField();
+    private Button limpiar = new Button("Limpiar");
+    private ImageButton back = new ImageButton("/images/BackButton-01.png", 50, 50);
+
+    private Text msm = new Text("");
 
     public Scene organizar() {
-        
+
         registrar.setLayoutX(300);
         registrar.setLayoutY(375);
         po.setFont(Font.loadFont(font, 16));
@@ -87,8 +91,6 @@ public class PantallaRegistro {
         fechaMovil.setFill(Color.WHITE);
         fechaReg.setFont(Font.loadFont(font, 16));
         fechaReg.setFill(Color.WHITE);
-        tipoMov.setFont(Font.loadFont(font, 16));
-        tipoMov.setFill(Color.WHITE);
 
         agent.setLayoutX(70);
         agent.setLayoutY(100);
@@ -122,8 +124,6 @@ public class PantallaRegistro {
         fechaMovil.setLayoutY(282);
         fechaReg.setLayoutX(557);
         fechaReg.setLayoutY(320);
-        tipoMov.setLayoutX(557);
-        tipoMov.setLayoutY(357);
 
         tfpo.setLayoutX(375);
         tfpo.setLayoutY(100);
@@ -151,12 +151,21 @@ public class PantallaRegistro {
         tffechaMovil.setLayoutY(257);
         tffechaReg.setLayoutX(625);
         tffechaReg.setLayoutY(297);
-        tftipoMov.setLayoutX(625);
-        tftipoMov.setLayoutY(337);
+        limpiar.setLayoutX(600);
+        limpiar.setLayoutY(390);
+
+        back.setLayoutX(15);
+        back.setLayoutY(390);
+
+        msm.setTextAlignment(TextAlignment.CENTER);
+        msm.setFill(Color.RED);
+        msm.setLayoutX(300);
+        msm.setLayoutY(365);
 
         root2.getChildren().addAll(registrar, label, po, tfpo, co, tfco, gen, tfgen, edad, tfedad, anionac, tfanionac,
-                tipomov, tftipomov, viatrans, tfviatrans, paisproc, tfpaisproc, paisdest, tfpaisdest, fechaMovil, tffechaMovil, fechaReg, tffechaReg, tipoMov, tftipoMov, agent);
+                tipomov, tftipomov, viatrans, tfviatrans, paisproc, tfpaisproc, paisdest, tfpaisdest, fechaMovil, tffechaMovil, fechaReg, tffechaReg, limpiar, agent, back,msm);
         root.getChildren().addAll(fondo, root2);
+        limpiar.setOnAction(value -> limpiar());
         return new Scene(root, 800, 450);
     }
 
@@ -164,10 +173,49 @@ public class PantallaRegistro {
         return registrar;
     }
 
-    public Migracion getRegistro() {
-    //Guayas,Guayaquil,femenino,09/08/2000,18
-    Migrante migrante = new Migrante(tfpo.getText(),tfco.getText(), tfgen.getText(),tfanionac.getValue(), Integer.parseInt(tfedad.getText()));
-    Migracion migra = new Migracion(tftipoMov.getText(),tfviatrans.getText(),tffechaMovil.getValue(),tffechaReg.getValue(),tfpaisproc.getText(),tfpaisdest.getText(), migrante);
-    return migra;
+    public Button getBack() {
+        return back;
+    }
+
+    public boolean RegistrarDatos() {
+        //Guayas,Guayaquil,femenino,09/08/2000,18
+        try {
+            Migrante migrante = new Migrante(tfpo.getText(), tfco.getText(), tfgen.getText(), tfanionac.getValue(), Integer.parseInt(tfedad.getText()));
+            Migracion migra = new Migracion(tftipomov.getText(), tfviatrans.getText(), tffechaMovil.getValue(), tffechaReg.getValue(), tfpaisproc.getText(), tfpaisdest.getText(), migrante);
+            migracion.Migracion.agregarMigracion(migra);
+            msm.setText("Registro Correcto");
+            return true;
+        } catch (NullPointerException e) {
+            msm.setText("Datos Incorrectos o Faltantes");
+            return false;
+        } catch (NumberFormatException e) {
+            msm.setText("Datos Incorrectos o Faltantes");
+            return false;
+        } catch (Exception e) {
+            msm.setText("Datos Incorrectos o Faltantes");
+            return false;
+        }
+
     }// //entrada,avion,21/07/2019,07/07/2019,Ecuador,EstadosUnidos
+
+    public boolean verificar() {
+        return true;
+    }
+
+    public void limpiar() {
+        tfpo.setText("");
+        tfco.setText("");
+        tfgen.setText("");
+        tfanionac.setValue(LocalDate.now());
+        tfedad.setText("");
+        tftipomov.setText("");
+        tfviatrans.setText("");
+        tffechaMovil.setValue(LocalDate.now());
+        tffechaReg.setValue(LocalDate.now());
+        tfpaisproc.setText("");
+        tfpaisdest.setText("");
+        msm.setText("");
+
+    }
+
 }
