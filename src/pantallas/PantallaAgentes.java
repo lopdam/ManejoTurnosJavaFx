@@ -25,7 +25,7 @@ public class PantallaAgentes {
     private Pane root2 = new Pane();
     private ImageView fondo = new ImageView(new Image("/images/fondo.png"));
     private ImageButton turno = new ImageButton("/images/TurnButton.png",325,60);
-    private static ComboBox cbAgentes = new ComboBox();
+    private ComboBox cbAgentes = new ComboBox();
     private ComboBox cbMigrante = new ComboBox();
     private ImageButton back = new ImageButton("/images/BackButton-01.png",50,50);
     private PantallaGenerarTurno PGT = new PantallaGenerarTurno();
@@ -63,7 +63,7 @@ public class PantallaAgentes {
         return PR;
     }
     
-    public static void llenarAgentes(){
+    public void llenarAgentes(){
         Iterator<Agente> it=Admin.getAgentes().iterator();
         cbAgentes.getItems().clear();
         while(it.hasNext()){
