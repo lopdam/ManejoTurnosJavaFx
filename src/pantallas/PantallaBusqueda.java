@@ -12,6 +12,7 @@ import java.util.ListIterator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -41,6 +42,7 @@ public class PantallaBusqueda {
     private ComboBox cb = new ComboBox();
     //private ComboBox cb1 = new ComboBox();
     private TextField txt1 = new TextField();
+    private Button buscar = new Button();
     private ArrayList<Migracion> migBusquedas = new ArrayList<>();
 
     public Scene organizar() {
@@ -58,12 +60,23 @@ public class PantallaBusqueda {
         cb.setLayoutY(105);
         txt1.setLayoutX(700);
         txt1.setLayoutY(170);
+        buscar.setLayoutX(700);
+        buscar.setLayoutY(235);
         label.setLayoutX(0);
         label.setLayoutY(25);
         back.setLayoutX(15);
         back.setLayoutY(390);
-        root2.getChildren().addAll(label, modify, delete, back, tv, cb, txt1);
+        root2.getChildren().addAll(label, modify, delete, back, tv, cb, txt1,buscar);
         root.getChildren().addAll(fondo, root2);
+
+        buscar.setOnAction(z -> {
+            buscar();
+        });
+
+        ObservableList<String> opcBusq = FXCollections.observableArrayList("fecha", "Provincia Origen",
+               "Canton Origen", "Lugar Destino");
+
+        cb.setItems(opcBusq);
 
         TableColumn<Migracion, String> tipoMov = new TableColumn<>("tipo");
         tipoMov.setCellValueFactory(new PropertyValueFactory<Migracion, String>("tipoMov"));
