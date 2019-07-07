@@ -43,7 +43,7 @@ public class PantallaBusqueda {
     //private ComboBox cb1 = new ComboBox();
     private TextField txt1 = new TextField();
     private Button buscar = new Button();
-   
+
     private ArrayList<Migracion> migBusquedas = new ArrayList<>();
 
     public Scene organizar() {
@@ -78,7 +78,9 @@ public class PantallaBusqueda {
         buscar.setOnAction(z -> {
             buscar();
         });
-
+        modify.setOnAction(value -> {
+            modificar();
+        });
         ObservableList<String> opcBusq = FXCollections.observableArrayList("fecha", "Provincia Origen",
                 "Canton Origen", "Lugar Destino");
 
@@ -125,8 +127,9 @@ public class PantallaBusqueda {
     public void buscar() {
         if (cb.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("fecha")) {
             ListIterator<Migracion> lt1 = Migracion.getRegistroMigratorios().listIterator();
+             migBusquedas.clear();
             while (lt1.hasNext()) {
-                if (txt1.getText().equals(lt1.next().getFechaRegistro())) {
+                if (comparar(txt1.getText(), lt1.next().getFechaRegistro().toString())) {
                     migBusquedas.add(lt1.next());
                     ObservableList<Migracion> migrations = FXCollections.observableArrayList(migBusquedas);
                     tv.setItems(migrations);
@@ -134,8 +137,10 @@ public class PantallaBusqueda {
             }
         } else if (cb.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Provincia Origen")) {
             ListIterator<Migracion> lt1 = Migracion.getRegistroMigratorios().listIterator();
+             migBusquedas.clear();
             while (lt1.hasNext()) {
-                if (txt1.getText().equals(lt1.next().getMigrante().getProvOrg())) {
+
+                if (comparar(txt1.getText(), lt1.next().getMigrante().getProvOrg())) {
                     migBusquedas.add(lt1.next());
                     ObservableList<Migracion> migrations = FXCollections.observableArrayList(migBusquedas);
                     tv.setItems(migrations);
@@ -143,8 +148,10 @@ public class PantallaBusqueda {
             }
         } else if (cb.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Canton Origen")) {
             ListIterator<Migracion> lt1 = Migracion.getRegistroMigratorios().listIterator();
+             migBusquedas.clear();
             while (lt1.hasNext()) {
-                if (txt1.getText().equals(lt1.next().getMigrante().getCantonOrg())) {
+
+                if (comparar(txt1.getText(), lt1.next().getMigrante().getCantonOrg())) {
                     migBusquedas.add(lt1.next());
                     ObservableList<Migracion> migrations = FXCollections.observableArrayList(migBusquedas);
                     tv.setItems(migrations);
@@ -152,8 +159,9 @@ public class PantallaBusqueda {
             }
         } else if (cb.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Lugar Destino")) {
             ListIterator<Migracion> lt1 = Migracion.getRegistroMigratorios().listIterator();
+            migBusquedas.clear();
             while (lt1.hasNext()) {
-                if (txt1.getText().equals(lt1.next().getPaisDestino())) {
+                if (comparar(txt1.getText(), lt1.next().getPaisDestino())) {
                     migBusquedas.add(lt1.next());
                     ObservableList<Migracion> migrations = FXCollections.observableArrayList(migBusquedas);
                     tv.setItems(migrations);
@@ -167,7 +175,33 @@ public class PantallaBusqueda {
         Migracion.getRegistroMigratorios().remove(m);
         ObservableList<Migracion> migrations = FXCollections.observableArrayList(Migracion.getRegistroMigratorios());
         tv.setItems(migrations);
-         Migracion.UpDate();
+        Migracion.UpDate();
         tv.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    }
+
+    public void modificar() {
+        Migracion m = (Migracion) tv.getSelectionModel().getSelectedItem();
+        Migracion.getRegistroMigratorios().remove(m);
+        ObservableList<Migracion> migrations = FXCollections.observableArrayList(Migracion.getRegistroMigratorios());
+        tv.setItems(migrations);
+        Migracion.UpDate();
+        tv.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    }
+
+    public boolean comparar(String texto, String valor) {
+        int tamtxt = texto.length();
+        int tamvalor = valor.length();
+        texto=texto.toLowerCase();
+        valor=valor.toLowerCase();
+        
+        if (tamtxt > tamvalor) {
+          
+            return false;
+        } else if (texto.equals(valor.substring(0, tamtxt))) {
+            
+            return true;
+        }
+        
+        return false;
     }
 }
