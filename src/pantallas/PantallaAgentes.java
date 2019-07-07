@@ -23,7 +23,7 @@ import turnos.Asignar;
  * @author MINEDUC
  */
 public class PantallaAgentes {
-    
+
     private StackPane root = new StackPane();
     private Pane root2 = new Pane();
     private ImageView fondo = new ImageView(new Image("/images/fondo.png"));
@@ -33,7 +33,7 @@ public class PantallaAgentes {
     private ImageButton back = new ImageButton("/images/BackButton-01.png", 50, 50);
     private PantallaGenerarTurno PGT = new PantallaGenerarTurno();
     private PantallaRegistro PR = new PantallaRegistro();
-    
+
     public Scene organizar() {
         cbAgentes.setLayoutX(100);
         cbAgentes.setLayoutY(100);
@@ -48,38 +48,38 @@ public class PantallaAgentes {
         llenarAgentes();
         root2.getChildren().addAll(cbAgentes, cbMigrante, turno, back);
         root.getChildren().addAll(fondo, root2);
-        
+
         return new Scene(root, 800, 450);
     }
-    
+
     public ImageButton getBack() {
         return back;
     }
-    
+
     public PantallaGenerarTurno getPGT() {
         return PGT;
     }
-    
+
     public ImageButton getTurno() {
         return turno;
     }
-    
+
     public PantallaRegistro getPR() {
         return PR;
     }
-    
+
     public void llenarAgentes() {
         Iterator<Agente> it = Admin.getAgentes().iterator();
         cbAgentes.getItems().clear();
         while (it.hasNext()) {
             cbAgentes.getItems().add(it.next());
-            
+
         }
-        
+
     }
-    
+
     public void llenarCbMigrante() {
-        
+
         Agente a = (Agente) cbAgentes.getValue();
         try {
             cbMigrante.setText(a.getTurno().toString());
@@ -87,9 +87,13 @@ public class PantallaAgentes {
             System.out.println("No existen turnos suficentes");
         }
     }
-    
+
     public Button getBtnMigrante() {
         return cbMigrante;
     }
-    
+
+    public Agente AgenteRegistrador() {
+        return (Agente) cbAgentes.getValue();
+    }
+
 }

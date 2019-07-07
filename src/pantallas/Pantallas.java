@@ -37,7 +37,7 @@ public class Pantallas extends Application {
         pantallaInicio.getTurnos().setOnAction(e -> primaryStage.setScene(sc2));
         pantallaInicio.getRegistros().setOnAction(e -> primaryStage.setScene(sc3));
         pantallaInicio.getPT().getBack().setOnAction(e -> {
-            pantallaInicio.getPT().getPA().getBtnMigrante().setText("");
+
             primaryStage.setScene(sc);
         });
         pantallaInicio.getPR().getBack().setOnAction(e -> primaryStage.setScene(sc));
@@ -46,7 +46,10 @@ public class Pantallas extends Application {
 
             primaryStage.setScene(sc4);
         });
-        pantallaInicio.getPT().getPA().getBack().setOnAction(e -> primaryStage.setScene(sc2));
+        pantallaInicio.getPT().getPA().getBack().setOnAction(e -> {
+            pantallaInicio.getPT().getPA().getBtnMigrante().setText("");
+            primaryStage.setScene(sc2);
+        });
         pantallaInicio.getPT().getPA().getTurno().setOnAction(e -> {
             pantallaInicio.getPT().getPA().getBtnMigrante().setText("");
             primaryStage.setScene(sc5);
@@ -63,6 +66,12 @@ public class Pantallas extends Application {
 
         pantallaInicio.getPT().getPTD().saliPublicidad().setOnAction(e -> primaryStage.setScene(sc2));
 
+        pantallaInicio.getPT().getPA().getBtnMigrante().setOnAction(e -> primaryStage.setScene(sc8));
+        
+        pantallaInicio.getPT().getPA().getPR().getBtnRegisto().setOnAction(e->{
+        primaryStage.setScene(sc4);
+        });
+        
         primaryStage.setTitle("Migration System");
         primaryStage.setScene(sc);
         primaryStage.show();
