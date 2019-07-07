@@ -35,7 +35,10 @@ public class Pantallas extends Application {
         Scene sc9 = pantallaInicio.getPT().getPTD().getScene();
 
         pantallaInicio.getTurnos().setOnAction(e -> primaryStage.setScene(sc2));
-        pantallaInicio.getRegistros().setOnAction(e -> primaryStage.setScene(sc3));
+        pantallaInicio.getRegistros().setOnAction(e -> {
+            pantallaInicio.getPR().ultimoRegistro();
+            primaryStage.setScene(sc3);
+        });
         pantallaInicio.getPT().getBack().setOnAction(e -> {
 
             primaryStage.setScene(sc);

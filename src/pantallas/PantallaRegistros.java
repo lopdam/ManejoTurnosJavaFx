@@ -44,7 +44,6 @@ public class PantallaRegistros {
         list.setPrefWidth(700);
         list.setPrefHeight(200);
         
-        ultimoRegistro();
         return new Scene(root, 800, 450);
     }
 

@@ -33,7 +33,7 @@ public class ReaderWriter {
 
             while ((line = in.readLine()) != null) {
                 String[] migraciones = line.split(",");
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 Migrante mig = new Migrante(migraciones[6], migraciones[7], migraciones[8], LocalDate.parse(migraciones[9],formatter), Integer.valueOf(migraciones[10]));
                 Migracion migracion = new Migracion(migraciones[0], migraciones[1], LocalDate.parse(migraciones[2],formatter), LocalDate.parse(migraciones[3],formatter), migraciones[4], migraciones[5], mig);
                 Migracion.agregarLeer(migracion);

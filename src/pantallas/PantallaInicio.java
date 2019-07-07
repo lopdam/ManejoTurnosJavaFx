@@ -36,6 +36,7 @@ public class PantallaInicio {
         label.setLayoutY(65);
         root2.getChildren().addAll(registros,turnos,label);
         root.getChildren().addAll(fondo,root2);
+       
         return new Scene(root,800,450);
     }
 

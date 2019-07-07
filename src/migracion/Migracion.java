@@ -47,12 +47,17 @@ public class Migracion {
 
     //Esta sirve cuando solamente se registra
     public static boolean agregarMigracion(Migracion migra) {
-        if(migra==null){
+        if (migra == null) {
             return false;
         }
         registroMigratorios.add(migra);
         ReaderWriter.writerRegistrosM();
-        return  true;
+        return true;
+    }
+
+    public static boolean UpDate() {
+        ReaderWriter.writerRegistrosM();
+        return true;
     }
 
     public String toString() {
