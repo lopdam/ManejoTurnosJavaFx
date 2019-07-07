@@ -43,14 +43,15 @@ public class PantallaBusqueda {
     //private ComboBox cb1 = new ComboBox();
     private TextField txt1 = new TextField();
     private Button buscar = new Button();
+   
     private ArrayList<Migracion> migBusquedas = new ArrayList<>();
 
     public Scene organizar() {
-        modify.setLayoutX(700);
-        modify.setLayoutY(295);
+        modify.setLayoutX(515);
+        modify.setLayoutY(250);
         //modify.setDisable(true);
-        delete.setLayoutX(700);
-        delete.setLayoutY(370);
+        delete.setLayoutX(515);
+        delete.setLayoutY(345);
         delete.setOnAction(z -> {
             delete();
         });
@@ -59,17 +60,18 @@ public class PantallaBusqueda {
         tv.setLayoutY(105);
         tv.prefHeight(650);
         tv.prefWidth(225);
-        cb.setLayoutX(700);
+        cb.setLayoutX(600);
         cb.setLayoutY(105);
-        txt1.setLayoutX(700);
-        txt1.setLayoutY(170);
+        txt1.setLayoutX(600);
+        txt1.setLayoutY(155);
         buscar.setLayoutX(700);
-        buscar.setLayoutY(235);
+        buscar.setLayoutY(205);
+
         buscar.setText("Buscar");
         label.setLayoutX(0);
         label.setLayoutY(25);
-        back.setLayoutX(15);
-        back.setLayoutY(390);
+        back.setLayoutX(575);
+        back.setLayoutY(195);
         root2.getChildren().addAll(label, modify, delete, back, tv, cb, txt1, buscar);
         root.getChildren().addAll(fondo, root2);
 
