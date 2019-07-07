@@ -33,14 +33,30 @@ public class Pantallas extends Application {
         Scene sc7 = pantallaInicio.getPR().getPB().organizar();
         Scene sc8 = pantallaInicio.getPT().getPA().getPR().organizar();
         Scene sc9 = pantallaInicio.getPT().getPTD().getScene();
-        
-        Scene sc10=pantallaInicio.getPR().getPB().getPM().organizar();//Pantalla Modificar
-        
-        pantallaInicio.getPR().getPB().getModificar().setOnAction(value->{
-        primaryStage.setScene(sc10);
+
+        Scene sc10 = pantallaInicio.getPR().getPB().getPM().organizar();//Pantalla Modificar
+
+        pantallaInicio.getPR().getPB().getModificar().setOnAction(value -> {
+            migracion.Migracion migracion = pantallaInicio.getPR().getPB().modificar();
+            if (pantallaInicio.getPR().getPB().getPM().setDatos(migracion)) {
+                primaryStage.setScene(sc10);
+            }
         });
-        pantallaInicio.getPR().getPB().getPM().getBack().setOnAction(value->{
-        primaryStage.setScene(sc7);
+
+        pantallaInicio.getPR().getPB().getPM().getBtnRegisto().setOnAction(value -> {
+            if (pantallaInicio.getPR().getPB().getPM().RegistrarDatos()) {
+                pantallaInicio.getPR().getPB().getPM().limpiar();
+                primaryStage.setScene(sc7);
+            }
+
+        });
+
+        pantallaInicio.getPR().getPB().getPM().getBack().setOnAction(value -> {
+            if (pantallaInicio.getPR().getPB().getPM().RegistrarDatos()) {
+                pantallaInicio.getPR().getPB().getPM().limpiar();
+                primaryStage.setScene(sc7);
+            }
+
         });
 
         pantallaInicio.getTurnos().setOnAction(e -> primaryStage.setScene(sc2));

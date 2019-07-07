@@ -230,4 +230,27 @@ public class PantallaRegistro {
 
     }
 
+    public boolean setDatos(Migracion migra) {
+
+        try {
+            tfpo.setText(migra.getMigrante().getProvOrg());
+            tfco.setText(migra.getMigrante().getCantonOrg());
+            tfgen.setText(migra.getMigrante().getSexo());
+            tfanionac.setValue(migra.getMigrante().getFecNac());
+            tfedad.setText(String.valueOf(migra.getMigrante().getEdad()));
+            tftipomov.setText(migra.getTipoMov());
+            tfviatrans.setText(migra.getViaTransporte());
+            tffechaMovil.setValue(migra.getFechaMovilizacion());
+            tffechaReg.setValue(migra.getFechaRegistro());
+            tfpaisproc.setText(migra.getPaisProc());
+            tfpaisdest.setText(migra.getPaisDestino());
+            msm.setText("Se va a modificar");
+            return true;
+        } catch (NullPointerException e) {
+            return false;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
 }

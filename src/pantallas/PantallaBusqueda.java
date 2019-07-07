@@ -76,7 +76,7 @@ public class PantallaBusqueda {
         root2.getChildren().addAll(label, modify, delete, back, tv, cb, txt1, buscar);
         root.getChildren().addAll(fondo, root2);
 
-       buscar.setOnAction(z -> {
+        buscar.setOnAction(z -> {
             buscar();
         });
 
@@ -184,13 +184,11 @@ public class PantallaBusqueda {
         tv.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
-    public void modificar() {
+    public Migracion modificar() {
         Migracion m = (Migracion) tv.getSelectionModel().getSelectedItem();
         Migracion.getRegistroMigratorios().remove(m);
-        ObservableList<Migracion> migrations = FXCollections.observableArrayList(Migracion.getRegistroMigratorios());
-        tv.setItems(migrations);
-        Migracion.UpDate();
-        tv.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        return m;
     }
 
     public boolean comparar(String texto, String valor) {
@@ -209,12 +207,12 @@ public class PantallaBusqueda {
 
         return false;
     }
-    
-    public PantallaRegistro getPM(){
-    return  PM;
+
+    public PantallaRegistro getPM() {
+        return PM;
     }
-    
-    public Button getModificar(){
-    return modify;
+
+    public Button getModificar() {
+        return modify;
     }
 }
