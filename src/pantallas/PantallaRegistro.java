@@ -7,8 +7,12 @@ package pantallas;
 
 import migracion.Migracion;
 import Resources.ImageButton;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.Date;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -36,28 +40,29 @@ public class PantallaRegistro {
     private Text co = new Text("CantOrigen");
     private Text gen = new Text("Genero");
     private Text edad = new Text("Edad");
-    private Text anionac = new Text("AñoNac");
+    private Text anionac = new Text("Nac");
     private Text tipomov = new Text("TipoMov");
     private Text viatrans = new Text("ViaTrans");
     private Text paisproc = new Text("PaisProc");
     private Text paisdest = new Text("PaisDestino");
-    private Text dia = new Text("Dia");
-    private Text mes = new Text("Mes");
-    private Text anio = new Text("Año");
+    private Text fechaMovil = new Text("FechMovil");
+    private Text fechaReg = new Text("FechReg");
+    private Text tipoMov = new Text("TipoMov");
     private TextField tfpo = new TextField();
     private TextField tfco = new TextField();
     private TextField tfgen = new TextField();
     private TextField tfedad = new TextField();
-    private TextField tfanionac = new TextField();
+    private DatePicker tfanionac = new DatePicker(LocalDate.now());
     private TextField tftipomov = new TextField();
     private TextField tfviatrans = new TextField();
     private TextField tfpaisproc = new TextField();
     private TextField tfpaisdest = new TextField();
-    private TextField tfdia = new TextField();
-    private TextField tfmes = new TextField();
-    private TextField tfanio = new TextField();
+    private DatePicker tffechaMovil = new DatePicker(LocalDate.now());
+    private DatePicker tffechaReg = new DatePicker(LocalDate.now());
+    private TextField tftipoMov = new TextField();
 
     public Scene organizar() {
+        
         registrar.setLayoutX(300);
         registrar.setLayoutY(375);
         po.setFont(Font.loadFont(font, 16));
@@ -78,12 +83,12 @@ public class PantallaRegistro {
         paisproc.setFill(Color.WHITE);
         paisdest.setFont(Font.loadFont(font, 16));
         paisdest.setFill(Color.WHITE);
-        dia.setFont(Font.loadFont(font, 16));
-        dia.setFill(Color.WHITE);
-        mes.setFont(Font.loadFont(font, 16));
-        mes.setFill(Color.WHITE);
-        anio.setFont(Font.loadFont(font, 16));
-        anio.setFill(Color.WHITE);
+        fechaMovil.setFont(Font.loadFont(font, 16));
+        fechaMovil.setFill(Color.WHITE);
+        fechaReg.setFont(Font.loadFont(font, 16));
+        fechaReg.setFill(Color.WHITE);
+        tipoMov.setFont(Font.loadFont(font, 16));
+        tipoMov.setFill(Color.WHITE);
 
         agent.setLayoutX(70);
         agent.setLayoutY(100);
@@ -113,12 +118,12 @@ public class PantallaRegistro {
         paisdest.setLayoutX(280);
         paisdest.setLayoutY(320);
 
-        dia.setLayoutX(557);
-        dia.setLayoutY(282);
-        mes.setLayoutX(557);
-        mes.setLayoutY(320);
-        anio.setLayoutX(557);
-        anio.setLayoutY(357);
+        fechaMovil.setLayoutX(557);
+        fechaMovil.setLayoutY(282);
+        fechaReg.setLayoutX(557);
+        fechaReg.setLayoutY(320);
+        tipoMov.setLayoutX(557);
+        tipoMov.setLayoutY(357);
 
         tfpo.setLayoutX(375);
         tfpo.setLayoutY(100);
@@ -129,7 +134,7 @@ public class PantallaRegistro {
 
         tfedad.setLayoutX(625);
         tfedad.setLayoutY(100);
-        tfanionac.setLayoutX(625);
+        tfanionac.setLayoutX(620);
         tfanionac.setLayoutY(140);
 
         tftipomov.setLayoutX(107);
@@ -142,15 +147,15 @@ public class PantallaRegistro {
         tfpaisdest.setLayoutX(385);
         tfpaisdest.setLayoutY(297);
 
-        tfdia.setLayoutX(625);
-        tfdia.setLayoutY(257);
-        tfmes.setLayoutX(625);
-        tfmes.setLayoutY(297);
-        tfanio.setLayoutX(625);
-        tfanio.setLayoutY(337);
+        tffechaMovil.setLayoutX(625);
+        tffechaMovil.setLayoutY(257);
+        tffechaReg.setLayoutX(625);
+        tffechaReg.setLayoutY(297);
+        tftipoMov.setLayoutX(625);
+        tftipoMov.setLayoutY(337);
 
         root2.getChildren().addAll(registrar, label, po, tfpo, co, tfco, gen, tfgen, edad, tfedad, anionac, tfanionac,
-                tipomov, tftipomov, viatrans, tfviatrans, paisproc, tfpaisproc, paisdest, tfpaisdest, dia, tfdia, mes, tfmes, anio, tfanio, agent);
+                tipomov, tftipomov, viatrans, tfviatrans, paisproc, tfpaisproc, paisdest, tfpaisdest, fechaMovil, tffechaMovil, fechaReg, tffechaReg, tipoMov, tftipoMov, agent);
         root.getChildren().addAll(fondo, root2);
         return new Scene(root, 800, 450);
     }
@@ -159,11 +164,10 @@ public class PantallaRegistro {
         return registrar;
     }
 
-    //public Migracion getRegistro() {
-        //Guayas,Guayaquil,femenino,09/08/2000,18
-        //Migrante migrante = new Migrante(tfpo.getText(),tf, font, fecNac, Integer.parseInt(tfedad.getText()));
-        
-        //Migracion migra = new Migracion(tf, tfviatrans.getText(), fechaMovilizacion, fechaRegistro, font, font, migrante);
-        //return migra;
-    //}// //entrada,avion,21/07/2019,07/07/2019,Ecuador,EstadosUnidos
+    public Migracion getRegistro() {
+    //Guayas,Guayaquil,femenino,09/08/2000,18
+    Migrante migrante = new Migrante(tfpo.getText(),tfco.getText(), tfgen.getText(),tfanionac.getValue(), Integer.parseInt(tfedad.getText()));
+    Migracion migra = new Migracion(tftipoMov.getText(),tfviatrans.getText(),tffechaMovil.getValue(),tffechaReg.getValue(),tfpaisproc.getText(),tfpaisdest.getText(), migrante);
+    return migra;
+    }// //entrada,avion,21/07/2019,07/07/2019,Ecuador,EstadosUnidos
 }

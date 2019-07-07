@@ -5,6 +5,7 @@
  */
 package migracion;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,15 +18,15 @@ public class Migracion {
 
     private String tipoMov;
     private String viaTransporte;
-    private Date fechaMovilizacion;
-    private Date fechaRegistro;
+    private LocalDate fechaMovilizacion;
+    private LocalDate fechaRegistro;
     private String paisProc;
     private String paisDestino;
     private Migrante migrante;
 
     private static List<Migracion> registroMigratorios = new LinkedList<Migracion>();
 
-    public Migracion(String tipoMov, String viaTransporte, Date fechaMovilizacion, Date fechaRegistro, String paisProc, String paisDestino, Migrante migrante) {
+    public Migracion(String tipoMov, String viaTransporte, LocalDate fechaMovilizacion, LocalDate fechaRegistro, String paisProc, String paisDestino, Migrante migrante) {
         this.tipoMov = tipoMov;
         this.viaTransporte = viaTransporte;
         this.fechaMovilizacion = fechaMovilizacion;

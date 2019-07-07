@@ -1,1 +1,6 @@
-entrada,avion,21/07/2019,07/07/2019,Ecuador,EstadosUnidos,Guayas,Guayaquil,femenino,09/08/2000,18
+entrada,avion,2019-07-21,2019-07-07,Ecuador,EstadosUnidos,Guayas,Guayaquil,femenino,2000-08-09,18
+ingreso,avion,2019-07-07,2019-07-07,peru,colombia,guayas,guayaquil,masculino,2019-07-07,18
+ingreso,avion,2019-07-07,2019-07-07,peru,colombia,guayas,guayaquil,masculino,2019-07-07,18
+ingreso,avion,2019-07-07,2019-07-07,peru,colombia,guayas,guayaquil,masculino,2019-07-07,18
+ingreso,avion,2019-07-07,2019-07-07,peru,colombia,guayas,guayaquil,masculino,2019-07-07,18
+ingreso,avion,2019-07-07,2019-07-07,peru,colombia,guayas,guayaquil,masculino,2019-07-07,18

@@ -11,12 +11,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import pantallas.PantallaBusqueda;
+
 import pantallas.Pantallas;
 
 /**
@@ -32,8 +33,9 @@ public class ReaderWriter {
 
             while ((line = in.readLine()) != null) {
                 String[] migraciones = line.split(",");
-                Migrante mig = new Migrante(migraciones[6], migraciones[7], migraciones[8], new SimpleDateFormat("dd/MM/yyyy").parse(migraciones[9]), Integer.valueOf(migraciones[10]));
-                Migracion migracion = new Migracion(migraciones[0], migraciones[1], new SimpleDateFormat("dd/MM/yyyy").parse(migraciones[2]), new SimpleDateFormat("dd/MM/yyyy").parse(migraciones[3]), migraciones[4], migraciones[5], mig);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+                Migrante mig = new Migrante(migraciones[6], migraciones[7], migraciones[8], LocalDate.parse(migraciones[9],formatter), Integer.valueOf(migraciones[10]));
+                Migracion migracion = new Migracion(migraciones[0], migraciones[1], LocalDate.parse(migraciones[2],formatter), LocalDate.parse(migraciones[3],formatter), migraciones[4], migraciones[5], mig);
                 Migracion.agregarLeer(migracion);
 
             }
@@ -42,8 +44,6 @@ public class ReaderWriter {
             Logger.getLogger(Pantallas.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Pantallas.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException pe) {
-            System.out.println(pe.toString());
         }
 
     }

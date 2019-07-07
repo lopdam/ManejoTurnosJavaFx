@@ -5,6 +5,7 @@
  */
 package migracion;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -16,10 +17,10 @@ public class Migrante {
     private String provOrg;
     private String cantonOrg;
     private String sexo;
-    private Date fecNac;
+    private LocalDate fecNac;
     private int edad;
 
-    public Migrante(String provOrg, String cantonOrg, String sexo, Date fecNac, int edad) {
+    public Migrante(String provOrg, String cantonOrg, String sexo, LocalDate fecNac, int edad) {
         this.provOrg = provOrg;
         this.cantonOrg = cantonOrg;
         this.sexo = sexo;
@@ -51,11 +52,11 @@ public class Migrante {
         this.sexo = sexo;
     }
 
-    public Date getFecNac() {
+    public LocalDate getFecNac() {
         return fecNac;
     }
 
-    public void setFecNac(Date fecNac) {
+    public void setFecNac(LocalDate fecNac) {
         this.fecNac = fecNac;
     }
 

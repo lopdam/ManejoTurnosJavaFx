@@ -81,7 +81,7 @@ public class Pantallas extends Application {
         pantallaInicio.getPT().getPA().getPR().getBtnRegisto().setOnAction(e -> {
 
             pantallaInicio.getPT().getPA().getBtnMigrante().setText("");
-            //migracion.Migracion.agregarMigracion(pantallaInicio.getPT().getPA().getPR().getRegistro());
+            migracion.Migracion.agregarMigracion(pantallaInicio.getPT().getPA().getPR().getRegistro());
             primaryStage.setScene(sc4);
         });
 
