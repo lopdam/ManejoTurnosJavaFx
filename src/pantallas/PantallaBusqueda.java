@@ -81,6 +81,7 @@ public class PantallaBusqueda {
         modify.setOnAction(value -> {
             modificar();
         });
+
         ObservableList<String> opcBusq = FXCollections.observableArrayList("fecha", "Provincia Origen",
                 "Canton Origen", "Lugar Destino");
 
