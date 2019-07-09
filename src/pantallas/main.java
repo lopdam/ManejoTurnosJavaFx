@@ -18,7 +18,7 @@ import turnos.Asignar;
  *
  * @author NICOLE
  */
-public class Pantallas extends Application {
+public class main extends Application {
 
     private static final PantallaInicio pantallaInicio = new PantallaInicio();
 

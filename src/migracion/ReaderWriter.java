@@ -18,7 +18,7 @@ import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import pantallas.Pantallas;
+import pantallas.main;
 
 /**
  *
@@ -41,9 +41,9 @@ public class ReaderWriter {
             }
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Pantallas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Pantallas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
